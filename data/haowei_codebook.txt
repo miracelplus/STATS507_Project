@@ -1,0 +1,415 @@
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      CODEBOOK
+
+
+                                Surveys of Consumers
+                                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      Surveys of Consumers                                              Page i
+
+
+                                      CONTENTS
+
+
+      item                                                                page
+
+      CASEID             CASE IDENTIFICATION NUMBER                          1
+      ICS                INDEX OF CONSUMER SENTIMENT                         1
+      ICC                INDEX OF CURRENT ECONOMIC CONDITIONS                1
+      ICE                INDEX OF CONSUMER EXPECTATIONS                      1
+      AGE                AGE OF RESPONDENT                                   1
+      BIRTHM             MONTH OF BIRTH                                      2
+      BIRTHY             YEAR OF BIRTH                                       2
+      REGION             REGION OF RESIDENCE                                 2
+      SEX                SEX OF RESPONDENT                                   3
+      MARRY              MARITAL STATUS OF RESPONDENT                        3
+      NUMKID             NUMBER OF CHILDREN <18 IN HOUSEHOLD                 3
+      NUMADT             NUMBER OF ADULTS 18+ IN HOUSEHOLD                   3
+      EDUC               EDUCATION OF RESPONDENT                             4
+      ECLGRD             EDUCATION: COLLEGE GRADUATE                         4
+      EHSGRD             EDUCATION: HIGH SCHOOL GRADUATE                     4
+      EGRADE             EDUCATION: HIGHEST GRADE COMPLETED                  5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   March 21, 2023
+
+
+
+      Surveys of Consumers                                              Page 1
+
+
+      CASEID             CASE IDENTIFICATION NUMBER
+
+           Data type: numeric
+           Record/columns: 1/1-6
+
+      ________________________________________________________________________
+
+      ICS                INDEX OF CONSUMER SENTIMENT
+
+           The Index of Consumer Sentiment
+
+           Data type: numeric
+           Decimals: 2
+           Record/columns: 1/8-13
+
+      ________________________________________________________________________
+
+      ICC                INDEX OF CURRENT ECONOMIC CONDITIONS
+
+           The Index of Current Economic Conditions
+
+           Data type: numeric
+           Decimals: 2
+           Record/columns: 1/15-20
+
+      ________________________________________________________________________
+
+      ICE                INDEX OF CONSUMER EXPECTATIONS
+
+           The Index of Consumer Expectations
+
+           Data type: numeric
+           Decimals: 2
+           Record/columns: 1/22-27
+
+      ________________________________________________________________________
+
+      AGE                AGE OF RESPONDENT
+
+           Age of Respondent
+
+           VALUE  LABEL
+              97  97 or older
+
+           Data type: numeric
+           Record/columns: 1/29-30
+
+
+
+
+
+
+
+
+
+                                   March 21, 2023
+
+
+
+      Surveys of Consumers                                              Page 2
+
+
+      BIRTHM             MONTH OF BIRTH
+
+           What is the month and year of your birth?--MONTH
+
+           VALUE  LABEL
+               1  January
+               2  February
+               3  March
+               4  April
+               5  May
+               6  June
+               7  July
+               8  August
+               9  September
+              10  October
+              11  November
+              12  December
+
+           Data type: numeric
+           Record/columns: 1/32-33
+
+      ________________________________________________________________________
+
+      BIRTHY             YEAR OF BIRTH
+
+           What is the month and year of your birth?--YEAR
+
+           Data type: numeric
+           Record/columns: 1/35-38
+
+      ________________________________________________________________________
+
+      REGION             REGION OF RESIDENCE
+
+           Region of Residence
+
+           VALUE  LABEL
+               1  West
+               2  North Central
+               3  Northeast
+               4  South
+
+           Data type: numeric
+           Record/column: 1/40
+
+
+
+
+
+
+
+
+
+                                   March 21, 2023
+
+
+
+      Surveys of Consumers                                              Page 3
+
+
+      SEX                SEX OF RESPONDENT
+
+           Sex of Respondent
+
+           VALUE  LABEL
+               1  Male
+               2  Female
+
+           Data type: numeric
+           Record/column: 1/42
+
+      ________________________________________________________________________
+
+      MARRY              MARITAL STATUS OF RESPONDENT
+
+           Are you currently married, (living with a
+           partner), separated, divorced, widowed, or have you never been
+           married?
+
+           VALUE  LABEL
+               1  Married/partner
+               2  Separated
+               3  Divorced
+               4  Widowed
+               5  Never married
+
+           Data type: numeric
+           Record/column: 1/44
+
+      ________________________________________________________________________
+
+      NUMKID             NUMBER OF CHILDREN <18 IN HOUSEHOLD
+
+           How many members of your household are 17 years of age or
+           younger?
+
+           VALUE  LABEL
+               0  None
+
+           Data type: numeric
+           Record/column: 1/46
+
+      ________________________________________________________________________
+
+      NUMADT             NUMBER OF ADULTS 18+ IN HOUSEHOLD
+
+           Counting yourself, how many members of your household are 18
+           or older?
+
+           Data type: numeric
+           Record/column: 1/48
+
+
+
+                                   March 21, 2023
+
+
+
+      Surveys of Consumers                                              Page 4
+
+
+      EDUC               EDUCATION OF RESPONDENT
+
+           Education of Respondent
+
+           VALUE  LABEL
+               1  Grade 0-8 no hs diploma
+               2  Grade 9-12 no hs diploma
+               3  Grade 0-12 w/ hs diploma
+               4  Grade 13-17 no col degree
+               5  Grade 13-16 w/ col degree
+               6  Grade 17 W/ col degree
+
+           Data type: numeric
+           Record/column: 1/50
+
+      ________________________________________________________________________
+
+      ECLGRD             EDUCATION: COLLEGE GRADUATE
+
+           Do you have a college degree?
+
+           VALUE  LABEL
+               1  Yes
+               5  No
+               8  DK
+               9  NA
+
+           Data type: numeric
+           Missing-data codes: 8-*
+           Record/column: 1/52
+
+      ________________________________________________________________________
+
+      EHSGRD             EDUCATION: HIGH SCHOOL GRADUATE
+
+           Did you get a high school graduation diploma or pass a high
+           school equivalency test?
+
+           VALUE  LABEL
+               1  Yes
+               5  No
+               8  DK
+               9  NA
+
+           Data type: numeric
+           Missing-data codes: 8-*
+           Record/column: 1/54
+
+
+
+
+
+
+                                   March 21, 2023
+
+
+
+      Surveys of Consumers                                              Page 5
+
+
+      EGRADE             EDUCATION: HIGHEST GRADE COMPLETED
+
+           What is the highest grade of school or year of college you
+           completed?
+
+           VALUE  LABEL
+              98  DK
+              99  NA
+
+           Data type: numeric
+           Missing-data codes: 98-*
+           Record/columns: 1/56-57
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   March 21, 2023
