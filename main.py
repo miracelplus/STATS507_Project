@@ -23,6 +23,8 @@ ratex_dict = {1 : "Go Up", 3 : "Stay The Same", 5 : "Go Down", 8 : "Don't Know",
 
 # Business Conditions Section from Survey
 df1 = pd.read_csv("data/Business_Conditions_Datafile.csv", sep=",", header=0)
+df1.dropna(inplace=True) # Drop rows which contain missing values
+df1.drop_duplicates(inplace = True)
 
 # Replace Survey Values with Dictionary Values
 df1.replace({"BAGO" : bago_dict}, inplace=True)
@@ -33,7 +35,7 @@ df1.replace({"UNEMP" : unemp_dict}, inplace=True)
 df1.replace({"GOVT" : govt_dict}, inplace=True)
 df1.replace({"RATEX" : ratex_dict}, inplace=True)
 
-print(df1)
+#print(df1)
 
 # Plot BAGO Values: Would you say that at the present time business conditions are better or worse 
 #                   than they were a year ago?
