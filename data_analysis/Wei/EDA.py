@@ -4,6 +4,8 @@ import seaborn as sns
 import plotly.express as px
 from plotly import graph_objects as go
 from plotly.subplots import make_subplots
+#Before the analysis, I am wondering whether there's a inequlaity between gender and income. Surprisely, women's income is higher that men's.
+#Therefore, the second analysis is aim to explain the result. No matter in which education level, the population of women is bigger than men.
 
 def EDA():
     data1 = pd.read_csv("data/Wei/ICE_MARRY_INCOME_EDU.csv", engine='python',on_bad_lines='skip')
