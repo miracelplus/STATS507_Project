@@ -1,54 +1,53 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+import plotly.express as px
+from plotly import graph_objects as go
+from plotly.subplots import make_subplots
 
 def EDA():
-    """EDA analysis code
+    data1 = pd.read_csv("data/Wei/ICE_MARRY_INCOME_EDU.csv", engine='python',on_bad_lines='skip')
+    #data1.columns =['CASEID','ICE', 'GOVT','INCOME','AGE','SEX' ,'MARRY', 'EDUC']
+    data1['INCOME'] = pd.to_numeric(data1['INCOME'], errors='coerce')
+
+    data1['INCOME2']=data1.loc[:,['INCOME']].round(-4)
+    data1['INCOME2']=data1.loc[:,['INCOME2']].clip(upper=100000.0)
+    #print(data1.head())
+    fig1 = make_subplots(rows=2, cols=1,  subplot_titles=("SEX 1", "SEX 2"))
+
+    fig1.append_trace(go.Histogram(x=data1['INCOME2'].mask(data1['SEX']=='1'),histnorm='percent'), row=1, col=1)
+    fig1.append_trace(go.Histogram(x=data1['INCOME2'].mask(data1['SEX']=='2'),histnorm='percent'), row=2, col=1)
+    fig1.update_xaxes(title_text="income", row=1, col=1)
+    fig1.update_xaxes(title_text="income", row=2, col=1)
+    fig1.update_yaxes(title_text="percentage", row=1, col=1)
+    fig1.update_yaxes(title_text="percentage", row=2, col=1)
+    #fig1.show()
+
+    fig2 = make_subplots(rows=2, cols=3,subplot_titles=("EDUC 1", "EDUC 2", "EDUC 3", "EDUC 4", "EDUC 5", "EDUC 6"))
+
+    fig2.append_trace(go.Histogram(x=data1['SEX'].mask(data1["EDUC"]=='1'),histnorm='percent'), row=1, col=1)
+    fig2.append_trace(go.Histogram(x=data1['SEX'].mask(data1["EDUC"]=='2'),histnorm='percent'), row=1, col=2)
+    fig2.append_trace(go.Histogram(x=data1['SEX'].mask(data1["EDUC"]=='3'),histnorm='percent'), row=1, col=3)
+    fig2.append_trace(go.Histogram(x=data1['SEX'].mask(data1["EDUC"]=='4'),histnorm='percent'), row=2, col=1)
+    fig2.append_trace(go.Histogram(x=data1['SEX'].mask(data1["EDUC"]=='5'),histnorm='percent'), row=2, col=2)
+    fig2.append_trace(go.Histogram(x=data1['SEX'].mask(data1["EDUC"]=='6'),histnorm='percent'), row=2, col=3)
+    fig2.update_xaxes(title_text="SEX", row=1, col=1)
+    fig2.update_xaxes(title_text="SEX", row=2, col=1)
+    fig2.update_xaxes(title_text="SEX", row=1, col=2)
+    fig2.update_xaxes(title_text="SEX", row=2, col=2)
+    fig2.update_xaxes(title_text="SEX", row=1, col=3)
+    fig2.update_xaxes(title_text="SEX", row=2, col=3)
+    fig2.update_yaxes(title_text="percentage", row=1, col=1)
+    fig2.update_yaxes(title_text="percentage", row=2, col=1)
+    fig2.update_yaxes(title_text="percentage", row=1, col=2)
+    fig2.update_yaxes(title_text="percentage", row=2, col=2)
+    fig2.update_yaxes(title_text="percentage", row=1, col=3)
+    fig2.update_yaxes(title_text="percentage", row=2, col=3)
+    
+    return [(fig1,'Relationship between Gender and Income'),(fig2,'Relationship between Gender and EDU')]
 
     Returns:
         figure_and_explanation_list: This list contains the figure and the explanation
         [(figure, explanation), (figure, explanation), ...]
         figure should be a plotly figure object, and explanation should be a string
-    """
-    figure_id_list = []
-    data1 = pd.read_csv("data/Wei/ICE_MARRY_INCOME_EDU.csv", engine='python',on_bad_lines='skip')
-    #data1.columns =['CASEID','ICE', 'GOVT','INCOME','AGE','SEX' ,'MARRY', 'EDUC']
-    data1['INCOME'] = pd.to_numeric(data1['INCOME'], errors='coerce')
-    data1['INCOME2']=data1.loc[:,['INCOME']].round(-4)
-    data1['INCOME2']=data1.loc[:,['INCOME2']].clip(upper=100000.0)
-    print(data1.iloc[[4]])
-    #print(data1.dtypes)
-    #,col_order=['0.0','10000.0','20000.0','30000.0','40000.0','50000.0','60000.0','70000.0','80000','90000.0','100000.0']
-    grid = sns.FacetGrid(data1[['MARRY', 'INCOME2']],col='INCOME2',col_wrap=4,col_order=[0.0,10000.0,20000.0,30000.0,40000.0,50000.0,60000.0,70000.0,80000.0,90000.0,100000.0])
-    _=grid.map_dataframe(sns.histplot,x='MARRY',stat='percent',binwidth=0.5)
-
-    #In figure 1, we would like to discuss the relationship between 'Income' and 'Married Status'. 
-    #Therefore, we utilized seaborn function to separate data into different income categories and applied Histogram method to show the distribution of different married status 
-
-    plt.figure(1)
-
-    grid = sns.FacetGrid(data1[['INCOME2', 'EDUC']],col='INCOME2',col_wrap=4,col_order=[0.0,10000.0,20000.0,30000.0,40000.0,50000.0,60000.0,70000.0,80000.0,90000.0,100000.0])
-    _=grid.map_dataframe(sns.histplot,x='EDUC',stat='percent',binwidth=0.5)
-
-    #In figure 2, we would like to discuss the relationship between 'Income' and 'Education'. 
-    #Therefore, we utilized seaborn function to separate data into different income categories and applied Histogram method to show the distribution of different Education level. 
-
-    plt.figure(2)
-
-    grid = sns.FacetGrid(data1[['INCOME2', 'SEX']],col='INCOME2',col_wrap=4,col_order=[0.0,10000.0,20000.0,30000.0,40000.0,50000.0,60000.0,70000.0,80000.0,90000.0,100000.0])
-    _=grid.map_dataframe(sns.histplot,x='SEX',stat='percent',binwidth=0.5)
-    #for axes in grid.axes.flat:
-    #    _ = axes.set_xticklabels(axes.get_xticklabels(), rotation=90)
-
-    #In figure 3, we would like to discuss the relationship between 'Income' and 'Sex'. 
-    #Therefore, we utilized seaborn function to separate data into different income categories and applied Histogram method to show the distribution of different gender. 
-
-    plt.figure(3)
-
-    '''
-    plt.figure(4)
-    data1[['INCOME2']].value_counts().loc[[0.0,10000.0,20000.0,30000.0,40000.0,50000.0,60000.0,70000.0,80000.0,90000.0,100000.0]].plot.bar()
-    #plt.hist(data1[['INCOME2']],bins=[10000,20000])'''
-
-    plt.show()
-    return figure_id_list
+   
