@@ -1,21 +1,21 @@
-
-
 import dash
 from dash import dcc
 from dash import html
 import plotly.express as px
+import plotly.graph_objects as go
 import pandas as pd
 import data_analysis
 import data_analysis.Harshang.EDA
 import data_analysis.Haowei.EDA
+import data_analysis.Runxuan.EDA
 
 app = dash.Dash(__name__)
 server = app.server
 
-
-
 figure_id_list_Harshang = data_analysis.Harshang.EDA.EDA()
 figure_id_list_Haowei = data_analysis.Haowei.EDA.EDA()
+figure_id_list_Runxuan = data_analysis.Runxuan.EDA.EDA()
+
 fig1, id1 = figure_id_list_Harshang[0]
 fig2, id2 = figure_id_list_Harshang[1]
 fig3, id3 = figure_id_list_Harshang[2]
@@ -29,7 +29,8 @@ fig9, id9 = figure_id_list_Haowei[1]
 fig10, id10 = figure_id_list_Haowei[2]
 fig11, id11 = figure_id_list_Haowei[3]
 
-
+fig12,id12,bef12,aft12 = figure_id_list_Runxuan[0]
+fig13,id13,bef13,aft13 = figure_id_list_Runxuan[1]
 
 app.layout = html.Div([
     html.H1('Business Conditions'),
@@ -147,9 +148,20 @@ app.layout = html.Div([
     dcc.Graph(
         id=id11,
         figure=fig11
-    )
-
-
+    ),
+    
+    html.Div(bef12),    
+    dcc.Graph(
+        id=id12,
+        figure=fig12
+    ),    
+    html.Div(aft12),
+    html.Div(bef13),
+    dcc.Graph(
+        id=id13,
+        figure=fig13
+    ),
+    html.Div(aft13)
 ])
 
 if __name__ == '__main__':
