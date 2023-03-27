@@ -7,6 +7,7 @@ import data_analysis
 import data_analysis.Harshang.EDA
 import data_analysis.Haowei.EDA
 import data_analysis.Runxuan.EDA
+import data_analysis.Jingyi.EDA
 
 app = dash.Dash(__name__)
 server = app.server
@@ -15,6 +16,7 @@ figure_id_list_Harshang = data_analysis.Harshang.EDA.EDA()
 figure_id_list_Haowei = data_analysis.Haowei.EDA.EDA()
 figure_id_list_Runxuan = data_analysis.Runxuan.EDA.EDA()
 figure_id_list_Wei = data_analysis.Wei.EDA.EDA()
+figure_id_list_Jingyi = data_analysis.Jingyi.EDA.EDA()
 
 fig1, id1 = figure_id_list_Harshang[0]
 fig2, id2 = figure_id_list_Harshang[1]
