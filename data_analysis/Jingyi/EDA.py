@@ -28,13 +28,15 @@ def EDA():
     data.replace({'PJOB': 999}, pd.np.nan, inplace=True)
     data.dropna(how="any", inplace=True)
 
-    # plot a scatterplot of income v pjob
-    plt.scatter(data['INCOME'], data['PJOB'])
+    # plot a scatterplot of income v pjob, add labels and title
+    fig = px.scatter(data, x='INCOME', y='PJOB', 
+                     labels={'INCOME': 'Income', 'PJOB': 'Expectation of Unemployment chance'})
 
-    # add labels and title
-    plt.xlabel('Income')
-    plt.ylabel('Expectation of Unemployment chance')
-    plt.title('"Expectation of Unemployment chance vs Income"')
+    fig.update_layout(title={'text': 'Expectation of Unemployment chance vs Income', 'x': 0.5},
+                      xaxis_title='Income',
+                      yaxis_title='Expectation of Unemployment chance')
+
+    fig.show()
 
     # EDA Findings: There exists a weak correlation. People with lower household income tend to think of their unemployment 
     # chance to be lower. I infer the reason behind it might be that lower income jobs are more stable. 
