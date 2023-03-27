@@ -45,7 +45,7 @@ fig16, id16 = figure_id_list_Jingyi[0]
 fig17, id17 = figure_id_list_Elena[0]
 fig18, id18 = figure_id_list_Elena[1]
 fig19, id19 = figure_id_list_Elena[2]
-fig20, id20 = figure_id_list_Elena[3]
+
 
 
 app.layout = html.Div([
