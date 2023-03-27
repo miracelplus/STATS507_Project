@@ -9,6 +9,7 @@ import data_analysis.Haowei.EDA
 import data_analysis.Runxuan.EDA
 import data_analysis.Jingyi.EDA
 import data_analysis.Wei.EDA
+import data_analysis.Elena.EDA
 
 app = dash.Dash(__name__)
 server = app.server
@@ -18,6 +19,7 @@ figure_id_list_Haowei = data_analysis.Haowei.EDA.EDA()
 figure_id_list_Runxuan = data_analysis.Runxuan.EDA.EDA()
 figure_id_list_Wei = data_analysis.Wei.EDA.EDA()
 figure_id_list_Jingyi = data_analysis.Jingyi.EDA.EDA()
+figure_id_list_Elena = data_analysis.Elena.EDA.EDA()
 
 fig1, id1 = figure_id_list_Harshang[0]
 fig2, id2 = figure_id_list_Harshang[1]
@@ -39,6 +41,11 @@ fig14, id14 = figure_id_list_Wei[0]
 fig15, id15 = figure_id_list_Wei[1]
 
 fig16, id16 = figure_id_list_Jingyi[0]
+
+fig17, id17 = figure_id_list_Elena[0]
+fig18, id18 = figure_id_list_Elena[1]
+fig19, id19 = figure_id_list_Elena[2]
+fig20, id20 = figure_id_list_Elena[3]
 
 
 app.layout = html.Div([
