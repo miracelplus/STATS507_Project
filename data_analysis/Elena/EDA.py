@@ -26,7 +26,7 @@ def EDA():
     fig2 = go.Figure()
     fig2.add_trace(go.Histogram(x=pfin['PAGO5'], name="PAGO5"))
     fig2.add_trace(go.Histogram(x=pfin['PEXP5'], name="PEXP5"))
-    fig2.update_layout(title="Personal Finance", 
+    fig2.update_layout(title="Personal Finance Histogram", 
                        xaxis_title="Data", 
                        yaxis_title="Count")
     fig2.update_traces(opacity=0.75)
@@ -34,11 +34,11 @@ def EDA():
     AGE_group = pfin.groupby('AGE')
     AGE_mean = AGE_group[['PAGO5','PEXP5']].mean()
     fig3 = px.bar(AGE_mean, x=AGE_mean.index, y=['PAGO5', 'PEXP5'])
-    fig3.update_layout(title="Personal Finance by AGE")
+    fig3.update_layout(title="Average Personal Finance for each age group")
     fig3.show()
     KID_group = pfin.groupby('NUMKID')
     KID_mean = KID_group[['PAGO5','PEXP5']].mean()
     fig4 = px.bar(KID_mean, x=KID_mean.index, y=['PAGO5', 'PEXP5'])
-    fig4.update_layout(title="Personal Finance by NUMKID")
+    fig4.update_layout(title="Average Personal Finance for each number of kid group")
     fig4.show()
-    return figure_id_list
+    return [(fig1, 'Personal Finance Correlation Heatmap'), (fig2, 'Personal Finance Histogram'), (fig3, 'Average Personal Finance for each age group'), (fig4, 'Average Personal Finance for each number of kid group')]
