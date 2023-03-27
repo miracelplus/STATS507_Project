@@ -8,6 +8,7 @@ import data_analysis.Harshang.EDA
 import data_analysis.Haowei.EDA
 import data_analysis.Runxuan.EDA
 import data_analysis.Jingyi.EDA
+import data_analysis.Wei.EDA
 
 app = dash.Dash(__name__)
 server = app.server
