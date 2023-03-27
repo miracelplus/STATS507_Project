@@ -151,7 +151,7 @@ app.layout = html.Div([
             , style={'fontSize': 18}),
             dcc.Graph(
                     id=id2,
-                    figure=fig1
+                    figure=fig2
                     ),
             dcc.Markdown('''**Actual Findings HERE**'''
             , style={'fontSize': 18}),
@@ -161,6 +161,18 @@ app.layout = html.Div([
 
         dcc.Markdown('''**Select the year for which you would like to see the predicted GDP of United States**'''
                     , style={'fontSize': 18}),
+        dcc.Dropdown(
+            options=[
+                {'label': '2013', 'value': '2013'},
+                {'label': '2014', 'value': '2014'},
+                {'label': '2015', 'value': '2015'},
+            ],            
+            placeholder="Select a Year",
+            id='demo-dropdown'
+        ),
+        html.Div(id='dd-output-container')
+
+
 
     ]),
 
@@ -170,6 +182,14 @@ app.layout = html.Div([
     ]),
 
 ])
+
+@app.callback(
+    Output('dd-output-container', 'children'),
+    Input('demo-dropdown', 'value')
+)
+
+def update_output(value):
+    return f'The GDP of United States in {value} is predicted to be : '
 
 
 
