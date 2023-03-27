@@ -41,4 +41,4 @@ def EDA():
     fig4 = px.bar(KID_mean, x=KID_mean.index, y=['PAGO5', 'PEXP5'])
     fig4.update_layout(title="Average Personal Finance for each number of kid group")
     fig4.show()
-    return [(fig1, 'Personal Finance Correlation Heatmap'), (fig2, 'Personal Finance Histogram'), (fig3, 'Average Personal Finance for each age group'), (fig4, 'Average Personal Finance for each number of kid group')]
+    return [(fig2, 'Personal Finance Histogram'), (fig3, 'Average Personal Finance for each age group'), (fig4, 'Average Personal Finance for each number of kid group')]
