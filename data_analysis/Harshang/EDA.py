@@ -34,7 +34,7 @@ def EDA():
     df1.replace({"GOVT" : govt_dict}, inplace=True)
     df1.replace({"RATEX" : ratex_dict}, inplace=True)
 
-    print(df1)
+    #print(df1)
 
     # Plot BAGO Values: Would you say that at the present time business conditions are better or worse 
     #                   than they were a year ago?
@@ -42,6 +42,7 @@ def EDA():
     fig1 = px.bar(df1, x=df1['BAGO'].value_counts().index, y=df1['BAGO'].value_counts(normalize=True).mul(100).round(1).values,
                 color=df1['BAGO'].value_counts().index.astype(str), labels=dict(x='BAGO', y='Frequency'),
                 title="ECONOMY BETTER/WORSE YEAR AGO")
+    fig1.update_layout(title_x=0.5)
     fig1.update_xaxes(type='category')
     fig1.update_xaxes(categoryorder='category ascending')
 

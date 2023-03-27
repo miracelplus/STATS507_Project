@@ -2,8 +2,8 @@ import pandas as pd
 from pathlib import Path
 import plotly.express as px
 import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
+#import matplotlib
+#import matplotlib.pyplot as plt
 
 def EDA():
     """EDA analysis code
