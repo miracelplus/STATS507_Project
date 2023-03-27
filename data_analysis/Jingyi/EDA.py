@@ -40,6 +40,5 @@ def EDA():
     # EDA Findings: There exists a weak correlation. People with lower household income tend to think of their unemployment 
     # chance to be lower. I infer the reason behind it might be that lower income jobs are more stable. 
 
-    return figure_id_list
     return [(fig, 'Expectation of Unemployment chance vs Income')]
 
