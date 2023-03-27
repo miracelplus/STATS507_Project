@@ -38,6 +38,8 @@ fig13,id13,bef13,aft13 = figure_id_list_Runxuan[1]
 fig14, id14 = figure_id_list_Wei[0]
 fig15, id15 = figure_id_list_Wei[1]
 
+fig16, id16 = figure_id_list_Jingyi[0]
+
 
 app.layout = html.Div([
 
