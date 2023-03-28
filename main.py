@@ -251,6 +251,20 @@ app.layout = html.Div([
         ]),
         dcc.Markdown('''No matter in which education level, the population of women is bigger than men. Hence, Receiving higher education makes female get more paid.''', style={'fontSize': 18}),
 
+        # fig 16
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Expectation of Unemployment chance vs Income', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown('''Does there exist a correlation between people's expectation of unemployment chance over the next 5 years and their household income in the previous year?'''
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id1,
+                    figure=fig1
+                    ),
+            dcc.Markdown('''There exists a weak correlation. People with lower household income tend to think of their unemployment chance to be lower. I infer the reason behind it might be that lower income jobs are more stable. '''
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
         
         dcc.Markdown('''___'''),
         html.Div([
