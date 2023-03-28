@@ -47,6 +47,7 @@ fig16, id16 = figure_id_list_Jingyi[0]
 
 fig17, id17 = figure_id_list_Elena[0]
 fig18, id18 = figure_id_list_Elena[1]
+fig19, id19 = figure_id_list_Elena[2]
 
 fig20, id20, bef20, aft20 = figure_id_list_Zixue[0]
 fig21, id21, bef21, aft21 = figure_id_list_Zixue[1]
@@ -267,26 +268,40 @@ app.layout = html.Div([
         
         dcc.Markdown('''___'''),
         html.Div([
-            html.H2('Average Personal Finance by age group', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each age group.'''
+            html.H2('Personal Finance Histogram', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown('''This histogram shows whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now.'''
             , style={'fontSize': 18}),
             dcc.Graph(
                     id=id17,
                     figure=fig17
                     ),
-            dcc.Markdown('''For each age group, the average response of comparing current personal finance to that of 5 years ago is correlated to the average response of comparing current personal finance to that of 5 years in the future. The average response is lower for younger age groups, meaning that the personal finance of young adults has gotten better and they expect it to be better in the future, compared to older adults.'''
+            dcc.Markdown('''The majority of the people have lower responses, meaning that they believe that their current personal finance has gotten better than 5 years ago and they expect it to become better 5 years in the future.'''
             , style={'fontSize': 18}),
         ]),
         dcc.Markdown('''___'''),
         
         dcc.Markdown('''___'''),
         html.Div([
-            html.H2('Average Personal Finance by number of kid group', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each number of kids group.'''
+            html.H2('Average Personal Finance by age group', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each age group.'''
             , style={'fontSize': 18}),
             dcc.Graph(
                     id=id18,
                     figure=fig18
+                    ),
+            dcc.Markdown('''For each age group, the average response of comparing current personal finance to that of 5 years ago is correlated to the average response of comparing current personal finance to that of 5 years in the future. The average response is lower for younger age groups, meaning that the personal finance of young adults has gotten better and they expect it to be better in the future, compared to older adults.'''
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
+        
+              dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Average Personal Finance by number of kid group', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each number of kids group.'''
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id19,
+                    figure=fig19
                     ),
             dcc.Markdown('''For each number of kids group, the average response of comparing current personal finance to that of 5 years ago is correlated to the average response of comparing current personal finance to that of 5 years in the future. The average response is higher for households with no kids, meaning that the personal finance of these households has not gotten better and they expect it to be the same in the future, compared to households with children.'''
             , style={'fontSize': 18}),
