@@ -4,9 +4,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import data_analysis
+import base64
 import data_analysis.Harshang.EDA
 import data_analysis.Haowei.EDA
 import data_analysis.Runxuan.EDA
+import data_analysis.Zixue.EDA
 # import data_analysis.Jingyi.EDA
 # import data_analysis.Wei.EDA
 # import data_analysis.Elena.EDA
@@ -20,6 +22,7 @@ figure_id_list_Runxuan = data_analysis.Runxuan.EDA.EDA()
 # figure_id_list_Wei = data_analysis.Wei.EDA.EDA()
 # figure_id_list_Jingyi = data_analysis.Jingyi.EDA.EDA()
 # figure_id_list_Elena = data_analysis.Elena.EDA.EDA()
+figure_id_list_Zixue = data_analysis.Zixue.EDA.EDA()
 
 fig1, id1 = figure_id_list_Harshang[0]
 fig2, id2 = figure_id_list_Harshang[1]
@@ -46,7 +49,14 @@ fig13,id13,bef13,aft13 = figure_id_list_Runxuan[1]
 # fig18, id18 = figure_id_list_Elena[1]
 # fig19, id19 = figure_id_list_Elena[2]
 
+fig20, id20, bef20, aft20 = figure_id_list_Zixue[0]
+fig21, id21, bef21, aft21 = figure_id_list_Zixue[1]
+fig22, id22, bef22, aft22 = figure_id_list_Zixue[2]
+fig23, id23, bef23, aft23 = figure_id_list_Zixue[3]
 
+
+image_filename = 'data/GDP_prediction.png'
+encoded_image = base64.b64encode(open(image_filename, 'rb').read())
 
 app.layout = html.Div([
 
@@ -119,6 +129,7 @@ app.layout = html.Div([
         dcc.Markdown('''___'''),
         # COPY ENDING HERE
 
+        # Fig 8
         dcc.Markdown('''___'''),
         html.Div([
             html.H2('Consumer Age Distribution', style={'color': 'green', 'fontSize': 22}),
@@ -135,6 +146,7 @@ app.layout = html.Div([
 
         dcc.Markdown('''The economic condition, expectation, and sentiment of consumer should be influenced by their age. Also, they will be good indicators of the economic condition of the country. We want to see if there is any correlation between the age of the consumer and their economic sentiment.''', style={'fontSize': 18}),
 
+        # Fig 9
         dcc.Markdown('''___'''),
         html.Div([
             html.H2('Average Index of Consumer Sentiment (ICS) for each age group', style={'color': 'green', 'fontSize': 22}),
@@ -145,6 +157,7 @@ app.layout = html.Div([
         ]),
         dcc.Markdown('''___'''),
         
+        # Fig 10
         dcc.Markdown('''___'''),
         html.Div([
             html.H2('Average Index of Consumer Condition (ICC) for each age group', style={'color': 'green', 'fontSize': 22}),
@@ -155,6 +168,7 @@ app.layout = html.Div([
         ]),
         dcc.Markdown('''___'''),
 
+        # Fig 11
         dcc.Markdown('''___'''),
         html.Div([
             html.H2('Average Index of Consumer Expectation (ICE) for each age group', style={'color': 'green', 'fontSize': 22}),
@@ -164,6 +178,7 @@ app.layout = html.Div([
                     ),
         ]),
         dcc.Markdown('''From the ICS, ICC, ICE figures above, we can see that all three indexes (which is highly correlated with the economic condition) decend with the increase of age, which may indicate the young people are generally more optimistic compared with the elder ones. Secondly, with the increase of age.''', style={'fontSize': 18}),
+
         # Fig 12 
         dcc.Markdown('''___'''),
         html.Div([
@@ -190,6 +205,66 @@ app.layout = html.Div([
                     figure=fig13
                     ),
             dcc.Markdown(aft13
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
+
+        # Fig 20
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Correlation Between GDP and Consumer Survey Variables', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown(str(bef20)
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id20,
+                    figure=fig20
+                    ),
+            dcc.Markdown(str(aft20)
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
+
+        # Fig 21
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('US GDP for different years', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown(str(bef21)
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id21,
+                    figure=fig21
+                    ),
+            dcc.Markdown(str(aft21)
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
+
+        # Fig 22
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Box Plot of Different Variables', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown(str(bef22)
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id22,
+                    figure=fig22
+                    ),
+            dcc.Markdown(str(aft22)
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
+
+        # Fig 23
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('GDP and INVAMT Scatter Plot', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown(str(bef23)
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id23,
+                    figure=fig23
+                    ),
+            dcc.Markdown(str(aft23)
             , style={'fontSize': 18}),
         ]),
         dcc.Markdown('''___'''),
@@ -230,20 +305,19 @@ app.layout = html.Div([
                         Which model has best accuracy among all?
                         Which model did we end up using in the end?**'''
                     , style={'fontSize': 18}),
+
+        dcc.Markdown('''**Finally, We implemented recurrent neural network (RNN) with only one Simple RNN layer to predict GDP values based on input variables INVAMT (investment value), YYYY (the year), and WT (household head weight). The model is trained using a dataset of quarterly averages for these variables from survey of customers and seasonal unadjusted, real GDP obtained from IMF website. The dataset is preprocessed to normalize the GDP and input variable. Then the dataset is split in to three parts, training dataset to be all samples before and include 2002, validation dataset to be all samples from 2003 to 2012, testing dataset to be all samples from 2013 to 2022.**''', style={'fontSize': 18}),
+
+        dcc.Markdown('''**After hyperparameter tuning, we train our model with 50 epochs using Adam (learning rate = 0.005) optimizer with mean square error as loss function.  The MAE value for our model on testing dataset is 0.075, indicating good performance of the model in predicting GDP values.**''', style={'fontSize': 18}),
+
+        dcc.Markdown('''**Finally, a line plot is created to compare the true and predicted GDP values. The x-axis is year and y-axis are GDP. The plot shows that the model predictions closely follow the true values for testing sets. Because we did not implement warm-up approach, the model performs badly on the starting point of the testing dataset (year 2013). 
+        **''', style={'fontSize': 18}),
         
         # COPY STARTING HERE
         dcc.Markdown('''___'''),
-        dcc.Markdown('''__USE THIS AS A TEMPLATE TO INSERT THE PREDICTION GRAPH AND RELATED INFORMATION__'''),
         html.Div([
-            html.H2('Graph Title HERE', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown('''**Assumptions and EDA Question HERE**'''
-            , style={'fontSize': 18}),
-            dcc.Graph(
-                    id=id2,
-                    figure=fig2
-                    ),
-            dcc.Markdown('''**Actual Findings HERE**'''
-            , style={'fontSize': 18}),
+            html.H2('GDP prediction using RNN', style={'color': 'green', 'fontSize': 22}),
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode())),
         ]),
         dcc.Markdown('''___'''),
         # COPY ENDING HERE
