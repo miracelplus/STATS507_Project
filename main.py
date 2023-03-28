@@ -257,8 +257,8 @@ app.layout = html.Div([
             dcc.Markdown('''Does there exist a correlation between people's expectation of unemployment chance over the next 5 years and their household income in the previous year?'''
             , style={'fontSize': 18}),
             dcc.Graph(
-                    id=id1,
-                    figure=fig1
+                    id=id16,
+                    figure=fig16
                     ),
             dcc.Markdown('''There exists a weak correlation. People with lower household income tend to think of their unemployment chance to be lower. I infer the reason behind it might be that lower income jobs are more stable. '''
             , style={'fontSize': 18}),
