@@ -9,8 +9,8 @@ import data_analysis.Harshang.EDA
 import data_analysis.Haowei.EDA
 import data_analysis.Runxuan.EDA
 import data_analysis.Zixue.EDA
-# import data_analysis.Jingyi.EDA
-# import data_analysis.Wei.EDA
+import data_analysis.Jingyi.EDA
+import data_analysis.Wei.EDA
 # import data_analysis.Elena.EDA
 
 app = dash.Dash(__name__)
@@ -19,8 +19,8 @@ server = app.server
 figure_id_list_Harshang = data_analysis.Harshang.EDA.EDA()
 figure_id_list_Haowei = data_analysis.Haowei.EDA.EDA()
 figure_id_list_Runxuan = data_analysis.Runxuan.EDA.EDA()
-# figure_id_list_Wei = data_analysis.Wei.EDA.EDA()
-# figure_id_list_Jingyi = data_analysis.Jingyi.EDA.EDA()
+figure_id_list_Wei = data_analysis.Wei.EDA.EDA()
+figure_id_list_Jingyi = data_analysis.Jingyi.EDA.EDA()
 # figure_id_list_Elena = data_analysis.Elena.EDA.EDA()
 figure_id_list_Zixue = data_analysis.Zixue.EDA.EDA()
 
@@ -40,14 +40,14 @@ fig11, id11 = figure_id_list_Haowei[3]
 fig12,id12,bef12,aft12 = figure_id_list_Runxuan[0]
 fig13,id13,bef13,aft13 = figure_id_list_Runxuan[1]
 
-# fig14, id14 = figure_id_list_Wei[0]
-# fig15, id15 = figure_id_list_Wei[1]
+fig14, id14 = figure_id_list_Wei[0]
+fig15, id15 = figure_id_list_Wei[1]
 
-# fig16, id16 = figure_id_list_Jingyi[0]
+fig16, id16 = figure_id_list_Jingyi[0]
 
-# fig17, id17 = figure_id_list_Elena[0]
-# fig18, id18 = figure_id_list_Elena[1]
-# fig19, id19 = figure_id_list_Elena[2]
+fig17, id17 = figure_id_list_Elena[0]
+fig18, id18 = figure_id_list_Elena[1]
+fig19, id19 = figure_id_list_Elena[2]
 
 fig20, id20, bef20, aft20 = figure_id_list_Zixue[0]
 fig21, id21, bef21, aft21 = figure_id_list_Zixue[1]
@@ -57,6 +57,12 @@ fig23, id23, bef23, aft23 = figure_id_list_Zixue[3]
 
 image_filename = 'data/GDP_prediction.png'
 encoded_image = base64.b64encode(open(image_filename, 'rb').read())
+
+image_filename2 = 'data/GDP_consumer_pred.png'
+encoded_image2 = base64.b64encode(open(image_filename2, 'rb').read())
+
+image_filename3 = 'data/GDP_worldbank_pred.png'
+encoded_image3 = base64.b64encode(open(image_filename3, 'rb').read())
 
 app.layout = html.Div([
 
@@ -356,33 +362,78 @@ app.layout = html.Div([
                 we chose to build predictive models to predict the GDP of United States.'''
             , style={'fontSize': 18}),
         
+        dcc.Markdown('''**In this section, we are actually using data from different sources. Specifically, we are constructing two different datasets, one is from the consumer report, and the other one is from the world bank (including the GDP result). For each dataset, we have implemented various models and we finally compare the result.**'''
+                    , style={'fontSize': 18}),
+        
         html.P('Here are the models we chose to predict GDP: ', style={'fontSize': 18}),
         dcc.Markdown('''
                         1. Linear Regression
                         2. XG Boost
+                        3. Random Forest
                         3. Recurrent Neural Network (RNN)
-                        4. **EDIT ABOVE MODELS IF NEEDED**
                     '''
                     , style={'fontSize': 18}),
         
         html.P('Here are the variables we used to build the above models: ', style={'fontSize': 18}),
         dcc.Markdown('''
-                        1. Spending
-                        2. Interest Rates
-                        3. Unemployment
-                        4. Inflation
-                        5. **ADD MORE VARIABLES AS NEEDED**
+                        1. ICE: The Index of Consumer Expectations
+                        2. UNEMP: How about people out of work during the coming 12 months --
+                        do you think that there will be more unemployment than now,
+                        about the same, or less?
+                        3. GOVT: As to the economic policy of the government -- I mean steps
+                        taken to fight inflation or unemployment -- would you say the
+                        government is doing a good job, only fair, or a poor job?	
+                        4. RATEX: No one can say for sure, but what do you think will happen to
+                        interest rates for borrowing money during the next 12
+                        months--will they go up, stay the same, or go down?	
+                        5. INCOME:	Now, thinking about your total income from all sources
+                        (including your job), how much did you receive in the
+                        previous year?
+                        6. INVAMT: Considering all of your(family's) investments in the stock market,
+                        overall about how much would your investments be worth today?
                     '''
                     , style={'fontSize': 18}),
+
+        html.Div([
+            html.H2('GDP prediction using consumer report dataset', style={'color': 'green', 'fontSize': 22}),
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image2.decode())),
+        ]),
+
+        dcc.Markdown('''
+            Random forest train MSE: 0.017696450768226374
+            XGBoost train MSE: 3.7131708546349683e-07
+            Linear regression n_MSE: 0.06205238714832588
+            Random forest test MSE: 1.9091957059298448
+            XGBoost test MSE: 2.0300266869267167
+        '''
+                    , style={'fontSize': 18}),
+
+        dcc.Markdown('''For the dataset from world bank, we are selecting following variables:
+                1.	Lending interest rate percentage	
+                2.	Expense (percentage of GDP)	
+                3.	General government final consumption expenditure (%percentageof GDP)	
+                4.	Exports of goods and services (percentage of GDP)	
+                5.	Unemployment, total (percentage of total labor force) (national estimate)	Inflation, GDP deflator (annual percentage)
         
-        dcc.Markdown('''**Talk about if some of the above variables are better/worse predictors
-                        of the GDP. If so which ones did we end up using in the end**'''
+        '''
+                    , style={'fontSize': 18}),
+
+        html.Div([
+            html.H2('GDP prediction using world bank dataset', style={'color': 'green', 'fontSize': 22}),
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image3.decode())),
+        ]),
+
+        dcc.Markdown('''
+            Linear regression train MSE: 0.04872908864363885
+            Random forest train MSE: 0.03947574564539995
+            XGBoost train MSE: 2.646786878949603e-07
+            Linear regression train MSE: 0.13671717619756904
+            Random forest train MSE: 1.2741367094303135
+            XGBoost train MSE: 0.616334083743745
+        '''
                     , style={'fontSize': 18}),
         
-        dcc.Markdown('''**Compare and contrast the 3 predictive models and their training and testing.
-                        How did we partition data for testing and testing?
-                        Which model has best accuracy among all?
-                        Which model did we end up using in the end?**'''
+        dcc.Markdown('''**We are using the last 5 years as the test dataset while other years are utilized as training dataset. From all results above, we found out that the best model is actually the linear regression model using the consumer report data. As the result shows, the prediction performs bad especially for Random forest and XGboost. Insufficient data might be the main reason and cause the simplest method, linear regression model, to surpass others. **'''
                     , style={'fontSize': 18}),
 
         dcc.Markdown('''**Finally, We implemented recurrent neural network (RNN) with only one Simple RNN layer to predict GDP values based on input variables INVAMT (investment value), YYYY (the year), and WT (household head weight). The model is trained using a dataset of quarterly averages for these variables from survey of customers and seasonal unadjusted, real GDP obtained from IMF website. The dataset is preprocessed to normalize the GDP and input variable. Then the dataset is split in to three parts, training dataset to be all samples before and include 2002, validation dataset to be all samples from 2003 to 2012, testing dataset to be all samples from 2013 to 2022.**''', style={'fontSize': 18}),
