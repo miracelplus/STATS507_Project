@@ -122,12 +122,12 @@ def EDA():
     that year, plotted as the y axis in the figure below.
     '''
     aft1 = '''Since the survey have mostly empty/too few data for years before 2004, the plot is plotting the partisan level
-    from 2004 to 2022. From the data shown above, for both income groups, the partisan tendencies have no drastic flutuating
-    since 2004, yet both have a slight overall decreasing trend. There is, however, a difference between the two groups: 
-    it is evident that individuals with the highest personal income have a clearer preference for either the Republican or 
-    the Democratic party than the individuals with the lowest personal incomes. Further, the difference in partisan level 
-    between the two income groups has an increasing trend in recent years, caused mainly by a significant decrease in 
-    partisan level among the low-income individuals since 2016.
+    from 2004 to 2022. From the data shown above, for both income groups, the partisan tendencies have no drastic
+    fluctuations since 2004, yet both have a slight overall decreasing trend. There is, however, a difference between the
+    two groups: it is evident that individuals with the highest personal income have a clearer preference for either the
+    Republican or the Democratic party than the individuals with the lowest personal incomes. Further, the difference in
+    partisan level between the two income groups exhibits an increasing trend in recent years, caused mainly by a
+    significant decrease in partisan level among the low-income individuals since 2016.
     '''
     figure_id_list.append((fig1,id1,bef1,aft1))
     

@@ -7,9 +7,9 @@ import data_analysis
 import data_analysis.Harshang.EDA
 import data_analysis.Haowei.EDA
 import data_analysis.Runxuan.EDA
-import data_analysis.Jingyi.EDA
-import data_analysis.Wei.EDA
-import data_analysis.Elena.EDA
+# import data_analysis.Jingyi.EDA
+# import data_analysis.Wei.EDA
+# import data_analysis.Elena.EDA
 
 app = dash.Dash(__name__)
 server = app.server
@@ -17,9 +17,9 @@ server = app.server
 figure_id_list_Harshang = data_analysis.Harshang.EDA.EDA()
 figure_id_list_Haowei = data_analysis.Haowei.EDA.EDA()
 figure_id_list_Runxuan = data_analysis.Runxuan.EDA.EDA()
-figure_id_list_Wei = data_analysis.Wei.EDA.EDA()
-figure_id_list_Jingyi = data_analysis.Jingyi.EDA.EDA()
-figure_id_list_Elena = data_analysis.Elena.EDA.EDA()
+# figure_id_list_Wei = data_analysis.Wei.EDA.EDA()
+# figure_id_list_Jingyi = data_analysis.Jingyi.EDA.EDA()
+# figure_id_list_Elena = data_analysis.Elena.EDA.EDA()
 
 fig1, id1 = figure_id_list_Harshang[0]
 fig2, id2 = figure_id_list_Harshang[1]
@@ -37,14 +37,14 @@ fig11, id11 = figure_id_list_Haowei[3]
 fig12,id12,bef12,aft12 = figure_id_list_Runxuan[0]
 fig13,id13,bef13,aft13 = figure_id_list_Runxuan[1]
 
-fig14, id14 = figure_id_list_Wei[0]
-fig15, id15 = figure_id_list_Wei[1]
+# fig14, id14 = figure_id_list_Wei[0]
+# fig15, id15 = figure_id_list_Wei[1]
 
-fig16, id16 = figure_id_list_Jingyi[0]
+# fig16, id16 = figure_id_list_Jingyi[0]
 
-fig17, id17 = figure_id_list_Elena[0]
-fig18, id18 = figure_id_list_Elena[1]
-fig19, id19 = figure_id_list_Elena[2]
+# fig17, id17 = figure_id_list_Elena[0]
+# fig18, id18 = figure_id_list_Elena[1]
+# fig19, id19 = figure_id_list_Elena[2]
 
 
 
@@ -164,6 +164,34 @@ app.layout = html.Div([
                     ),
         ]),
         dcc.Markdown('''From the ICS, ICC, ICE figures above, we can see that all three indexes (which is highly correlated with the economic condition) decend with the increase of age, which may indicate the young people are generally more optimistic compared with the elder ones. Secondly, with the increase of age.''', style={'fontSize': 18}),
+        # Fig 12 
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Level of Partisan for High and Low Income Groups', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown(bef12
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id12,
+                    figure=fig12
+                    ),
+            dcc.Markdown(aft12
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
+        
+        # Fig 13
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Economic Optimism in 5 Years for Different Age Groups', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown(bef13
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id13,
+                    figure=fig13
+                    ),
+            dcc.Markdown(aft13
+            , style={'fontSize': 18}),
+        ]),
         dcc.Markdown('''___'''),
         
     ]),
