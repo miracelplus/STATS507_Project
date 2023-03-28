@@ -274,7 +274,7 @@ app.layout = html.Div([
         ]),
         dcc.Markdown('''___'''),
         
-              dcc.Markdown('''___'''),
+        dcc.Markdown('''___'''),
         html.Div([
             html.H2('Average Personal Finance by number of kid group', style={'color': 'green', 'fontSize': 22}),
             dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each number of kids group.'''
