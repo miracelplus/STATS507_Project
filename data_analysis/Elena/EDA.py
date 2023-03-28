@@ -19,13 +19,13 @@ def EDA():
     path = Path('data/Elena/PFinClean.csv')
     pfin = pd.read_csv(path, index_col=0)
 
-    fig2 = go.Figure()
-    fig2.add_trace(go.Histogram(x=pfin['PAGO5'], name="PAGO5"))
-    fig2.add_trace(go.Histogram(x=pfin['PEXP5'], name="PEXP5"))
-    fig2.update_layout(title="Personal Finance Histogram", 
-                       xaxis_title="Data", 
-                       yaxis_title="Count")
-    fig2.update_traces(opacity=0.75)
+    #fig2 = go.Figure()
+    #fig2.add_trace(go.Histogram(x=pfin['PAGO5'], name="PAGO5"))
+    #fig2.add_trace(go.Histogram(x=pfin['PEXP5'], name="PEXP5"))
+    #fig2.update_layout(title="Personal Finance Histogram", 
+                       #xaxis_title="Data", 
+                       #yaxis_title="Count")
+    #fig2.update_traces(opacity=0.75)
     # fig2.show()
     AGE_group = pfin.groupby('AGE')
     AGE_mean = AGE_group[['PAGO5','PEXP5']].mean()
