@@ -118,7 +118,53 @@ app.layout = html.Div([
         ]),
         dcc.Markdown('''___'''),
         # COPY ENDING HERE
+
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Consumer Age Distribution', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown('''This graph shows the distribution of consumer age in the United States.'''
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id8,
+                    figure=fig8
+                    ),
+            dcc.Markdown('''The majority of the consumers are between 35 and 54 years old. However, we still have enough consumer data from other age groups to show the correlation in the next graph.'''
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
+
+        dcc.Markdown('''The economic condition, expectation, and sentiment of consumer should be influenced by their age. Also, they will be good indicators of the economic condition of the country. We want to see if there is any correlation between the age of the consumer and their economic sentiment.''', style={'fontSize': 18}),
+
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Average Index of Consumer Sentiment (ICS) for each age group', style={'color': 'green', 'fontSize': 22}),
+            dcc.Graph(
+                    id=id9,
+                    figure=fig9
+                    ),
+        ]),
+        dcc.Markdown('''___'''),
         
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Average Index of Consumer Condition (ICC) for each age group', style={'color': 'green', 'fontSize': 22}),
+            dcc.Graph(
+                    id=id10,
+                    figure=fig10
+                    ),
+        ]),
+        dcc.Markdown('''___'''),
+
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Average Index of Consumer Expectation (ICE) for each age group', style={'color': 'green', 'fontSize': 22}),
+            dcc.Graph(
+                    id=id11,
+                    figure=fig11
+                    ),
+        ]),
+        dcc.Markdown('''From the ICS, ICC, ICE figures above, we can see that all three indexes (which is highly correlated with the economic condition) decend with the increase of age, which may indicate the young people are generally more optimistic compared with the elder ones. Secondly, with the increase of age.''', style={'fontSize': 18}),
+        dcc.Markdown('''___'''),
         
     ]),
 
