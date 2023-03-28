@@ -30,15 +30,15 @@ def EDA():
                        xaxis_title="Data", 
                        yaxis_title="Count")
     fig2.update_traces(opacity=0.75)
-    fig2.show()
+    # fig2.show()
     AGE_group = pfin.groupby('AGE')
     AGE_mean = AGE_group[['PAGO5','PEXP5']].mean()
     fig3 = px.bar(AGE_mean, x=AGE_mean.index, y=['PAGO5', 'PEXP5'])
     fig3.update_layout(title="Average Personal Finance for each age group")
-    fig3.show()
+    # fig3.show()
     KID_group = pfin.groupby('NUMKID')
     KID_mean = KID_group[['PAGO5','PEXP5']].mean()
     fig4 = px.bar(KID_mean, x=KID_mean.index, y=['PAGO5', 'PEXP5'])
     fig4.update_layout(title="Average Personal Finance for each number of kid group")
-    fig4.show()
+    # fig4.show()
     return [(fig2, 'Personal Finance Histogram'), (fig3, 'Average Personal Finance for each age group'), (fig4, 'Average Personal Finance for each number of kid group')]

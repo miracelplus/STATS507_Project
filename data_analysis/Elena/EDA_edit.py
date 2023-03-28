@@ -47,19 +47,19 @@ def EDA():
                        xaxis_title="Data", 
                        yaxis_title="Count")
     fig2.update_traces(opacity=0.75)
-    fig2.show()
+    # fig2.show()
     
     AGE_group = pfin.groupby('AGE')
     AGE_mean = AGE_group[['PAGO5','PEXP5']].mean()
     fig3 = px.bar(AGE_mean, x=AGE_mean.index, y=['PAGO5', 'PEXP5'])
     fig3.update_layout(title="Personal Finance by AGE")
-    fig3.show()
+    # fig3.show()
 
     KID_group = pfin.groupby('NUMKID')
     KID_mean = KID_group[['PAGO5','PEXP5']].mean()
     fig4 = px.bar(KID_mean, x=KID_mean.index, y=['PAGO5', 'PEXP5'])
     fig4.update_layout(title="Personal Finance by NUMKID")
-    fig4.show()
+    # fig4.show()
 
     return figure_id_list
 

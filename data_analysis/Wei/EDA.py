@@ -48,9 +48,4 @@ def EDA():
     fig2.update_yaxes(title_text="percentage", row=2, col=3)
     
     return [(fig1,'Relationship between Gender and Income'),(fig2,'Relationship between Gender and EDU')]
-
-    Returns:
-        figure_and_explanation_list: This list contains the figure and the explanation
-        [(figure, explanation), (figure, explanation), ...]
-        figure should be a plotly figure object, and explanation should be a string
    
