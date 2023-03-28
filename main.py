@@ -45,7 +45,6 @@ fig15, id15 = figure_id_list_Wei[1]
 
 fig16, id16 = figure_id_list_Jingyi[0]
 
-fig17, id17 = figure_id_list_Elena[0]
 fig18, id18 = figure_id_list_Elena[1]
 fig19, id19 = figure_id_list_Elena[2]
 
@@ -215,7 +214,7 @@ app.layout = html.Div([
         ]),
         dcc.Markdown('''___'''),
         
-                dcc.Markdown('''___'''),
+        dcc.Markdown('''___'''),
         html.Div([
             html.H2('Economic Optimism in 5 Years for Different Age Groups', style={'color': 'green', 'fontSize': 22}),
             dcc.Markdown(bef13
@@ -262,20 +261,6 @@ app.layout = html.Div([
                     figure=fig1
                     ),
             dcc.Markdown('''There exists a weak correlation. People with lower household income tend to think of their unemployment chance to be lower. I infer the reason behind it might be that lower income jobs are more stable. '''
-            , style={'fontSize': 18}),
-        ]),
-        dcc.Markdown('''___'''),
-        
-        dcc.Markdown('''___'''),
-        html.Div([
-            html.H2('Personal Finance Histogram', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown('''This histogram shows whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now.'''
-            , style={'fontSize': 18}),
-            dcc.Graph(
-                    id=id17,
-                    figure=fig17
-                    ),
-            dcc.Markdown('''The majority of the people have lower responses, meaning that they believe that their current personal finance has gotten better than 5 years ago and they expect it to become better 5 years in the future.'''
             , style={'fontSize': 18}),
         ]),
         dcc.Markdown('''___'''),
