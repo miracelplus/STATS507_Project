@@ -1,11 +1,11 @@
 import pandas as pd
 from pathlib import Path
 import plotly.express as px
+import plotly.graph_objects as go
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sn
-
 
 def EDA():
     """EDA analysis code
