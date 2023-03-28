@@ -223,6 +223,29 @@ app.layout = html.Div([
         ]),
         dcc.Markdown('''___'''),
         
+        # Fig 14 
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('The Comparision of the income distribution between male and female', style={'color': 'green', 'fontSize': 22}),
+            dcc.Graph(
+                    id=id14,
+                    figure=fig14
+                    ),
+        ]),
+        dcc.Markdown('''.''', style={'fontSize': 18}),
+        
+        # Fig 15 
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('The Comparision of the income distribution between different education level', style={'color': 'green', 'fontSize': 22}),
+            dcc.Graph(
+                    id=id15,
+                    figure=fig15
+                    ),
+        ]),
+        dcc.Markdown('''.''', style={'fontSize': 18}),
+
+        
         dcc.Markdown('''___'''),
         html.Div([
             html.H2('Personal Finance Histogram', style={'color': 'green', 'fontSize': 22}),
