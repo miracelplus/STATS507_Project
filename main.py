@@ -119,6 +119,35 @@ app.layout = html.Div([
         dcc.Markdown('''___'''),
         # COPY ENDING HERE
         
+        # Fig 12 
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Level of Partisan for High and Low Income Groups', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown(bef12
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id12,
+                    figure=fig12
+                    ),
+            dcc.Markdown(aft12
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
+        
+        # Fig 13
+        dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('Economic Optimism in 5 Years for Different Age Groups', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown(bef13
+            , style={'fontSize': 18}),
+            dcc.Graph(
+                    id=id13,
+                    figure=fig13
+                    ),
+            dcc.Markdown(aft13
+            , style={'fontSize': 18}),
+        ]),
+        dcc.Markdown('''___'''),
         
     ]),
 
