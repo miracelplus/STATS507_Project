@@ -271,7 +271,7 @@ app.layout = html.Div([
             dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each age group.'''
             , style={'fontSize': 18}),
             dcc.Graph(
-                    id=id18,
+                    id=id17,
                     figure=fig17
                     ),
             dcc.Markdown('''For each age group, the average response of comparing current personal finance to that of 5 years ago is correlated to the average response of comparing current personal finance to that of 5 years in the future. The average response is lower for younger age groups, meaning that the personal finance of young adults has gotten better and they expect it to be better in the future, compared to older adults.'''
@@ -285,7 +285,7 @@ app.layout = html.Div([
             dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each number of kids group.'''
             , style={'fontSize': 18}),
             dcc.Graph(
-                    id=id19,
+                    id=id18,
                     figure=fig18
                     ),
             dcc.Markdown('''For each number of kids group, the average response of comparing current personal finance to that of 5 years ago is correlated to the average response of comparing current personal finance to that of 5 years in the future. The average response is higher for households with no kids, meaning that the personal finance of these households has not gotten better and they expect it to be the same in the future, compared to households with children.'''
