@@ -77,7 +77,7 @@ print(f"XGBoost fit MSE: {xgb_fit_mse}")
 print(f"Linear regression n_MSE: {n_linear_mse}")
 print(f"Random forest MSE: {rf_mse}")
 print(f"XGBoost MSE: {xgb_mse}")
-print(f"Linear regression prediction: {xgb_mse}")
+
 
 result['Y_fit_PREDICT']=n_linear_fit
 result['Y_xgb_fit_PREDICT']=xgb_fit
