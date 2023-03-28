@@ -224,7 +224,7 @@ app.layout = html.Div([
         dcc.Markdown('''___'''),
         
         # Fig 14 
-        dcc.Markdown('''___'''),
+        dcc.Markdown('''Analysis 14 and 15 are aim to find out whether there's any inequlaity between gender when it comes to the distribution of income.'''),
         html.Div([
             html.H2('The Comparision of the income distribution between male and female', style={'color': 'green', 'fontSize': 22}),
             dcc.Graph(
@@ -232,10 +232,10 @@ app.layout = html.Div([
                     figure=fig14
                     ),
         ]),
-        dcc.Markdown('''.''', style={'fontSize': 18}),
+        dcc.Markdown('''Women's income is higher that men's.''', style={'fontSize': 18}),
         
         # Fig 15 
-        dcc.Markdown('''___'''),
+        dcc.Markdown('''Therefore, the second analysis is aim to find possible reasons.'''),
         html.Div([
             html.H2('The Comparision of the income distribution between different education level', style={'color': 'green', 'fontSize': 22}),
             dcc.Graph(
@@ -243,7 +243,7 @@ app.layout = html.Div([
                     figure=fig15
                     ),
         ]),
-        dcc.Markdown('''.''', style={'fontSize': 18}),
+        dcc.Markdown('''No matter in which education level, the population of women is bigger than men. Hence, Receiving higher education makes female get more paid.''', style={'fontSize': 18}),
 
         
         dcc.Markdown('''___'''),
