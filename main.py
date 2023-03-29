@@ -522,9 +522,9 @@ app.layout = html.Div([
         
         dcc.Markdown('''In this section, we would like to build model to predict real, seasonal unadjusted gdp based on variables provided from Survey of Customers.
         The reason for choose gdp as our predictor is because it is pre-assumed that customer behavior would influence GDP natioally because GDP approximately equal to 
-        Consumption + Investment + Government Spending. We choose real GDP main because we would like our data to be adjusted from inflation, since Government Behavior
-        like monetary policy is unpredictable. We choose YYYY (the year), INVAMT (investment value) and WT (household head weight) as our covariates mainly because for those
-        variables they are highly correlated with GDP (>0.95 or <-0.95 for correlation coefficient). 
+        Consumption + Investment + Government Spending. We choose real GDP (in million dolars) mainly because we would like our data to be adjusted from inflation, since government behavior
+        like monetary policy is unpredictable. We choose YYYY (the year), INVAMT (investment value), WT (household head weight), PAGOR1 (REASONS: FINANCES B/W YR AGO (1))
+        and HOMEAMT (market value of home) as our covariates mainly because for those variables they are highly correlated with GDP (>0.80 or <-0.80 for correlation coefficient). 
         
                     '''
                     , style={'fontSize': 18}),
@@ -532,13 +532,18 @@ app.layout = html.Div([
         html.P('Here are the models we chose to predict GDP: ', style={'fontSize': 18}),
         dcc.Markdown('''
                         1. Linear Regression (Ordinary least square)
-                        2. linear Regression (SGD)
                         2. XG Boost
                         3. Random Forest
-                        3. Recurrent Neural Network (RNN)
+                        4. Linear Regression (SGD)
+                        5. Recurrent Neural Network (RNN)
                     '''
                     , style={'fontSize': 18}),
+        dcc.Markdown('''We started with the first three model first. Parameters for linear regression model are optimized through OLS (ordinary least square). We choose the number of 
+        estimators to be 5 and random state to be 5 for both XG Boost model and Random Forest model. We select YYYY (the year), INVAMT (investment value), WT (household head weight), PAGOR1 (REASONS: FINANCES B/W YR AGO (1))
+        and HOMEAMT (market value of home) as covariates for model training. The dataset is divided into three parts: training dataset to be year before 2003, validation dataset 
+        to be from year 2003 and year 2012, and testing dataset to be year after 2012. 
         
+        ''', style={'fontSize': 18}),
 
         html.Div([
             html.H2('GDP Prediction using Consumer Report Dataset', style={'color': 'green', 'fontSize': 22}),
@@ -547,47 +552,15 @@ app.layout = html.Div([
         
         dcc.Markdown('''Fit result: ''', style={'fontSize': 18}),
         dcc.Markdown('''
-            * Linear regression test MSE:0.012902330558300784
-            * Random forest test MSE: 0.2980126229712635
-            * XGBoost test MSE: 0.4051003743833473
-        '''
-                    , style={'fontSize': 18}),
-
-        
-
-        html.Div([
-            html.H2('GDP Prediction using World Bank Dataset', style={'color': 'green', 'fontSize': 22}),
-
-            html.P('For the dataset from world bank, we are selecting following variables: ', style={'fontSize': 18}),
-                dcc.Markdown('''
-                1. Lending interest rate percentage	
-                2. Expense (percentage of GDP)	
-                3. General government final consumption expenditure (%percentageof GDP)	
-                4. Exports of goods and services (percentage of GDP)	
-                5. Unemployment, total (percentage of total labor force) (national estimate)	Inflation, GDP deflator (annual percentage)
-        
-                '''
-                , style={'fontSize': 18}),
-            
-            html.Img(src='data:image/png;base64,{}'.format(encoded_image3.decode()), style={'height':'100%', 'width':'100%'}),
-        ]),
-        
-        dcc.Markdown('''Fit result: ''', style={'fontSize': 18}),
-        dcc.Markdown('''
-            * Linear regression train MSE: 0.04872908864363885
-            * Random forest train MSE: 0.03947574564539995
-            * XGBoost train MSE: 2.646786878949603e-07
-            * Linear regression train MSE: 0.13671717619756904
-            * Random forest train MSE: 1.2741367094303135
-            * XGBoost train MSE: 0.616334083743745
+            * Linear regression test MSE:0.012
+            * Random forest test MSE: 0.36
+            * XGBoost test MSE: 0.43
         '''
                     , style={'fontSize': 18}),
         
-        dcc.Markdown('''We are using the last 5 years as the test dataset while other years are utilized as training dataset. 
-                        From all results above, we found out that the best model is actually the linear regression model using
-                        the consumer report data. As the result shows, the prediction performs bad especially for Random forest
-                        and XGboost. Insufficient data might be the main reason and cause the simplest method, linear regression 
-                        model, to surpass others.'''
+        dcc.Markdown('''Based on the plot above, The Random Forest model and XG boost model are not able to learn from the training dataset and output decent prediction.
+        This could be attributed to the fact that these two model are not designed to treat sequential data. Linear regression model with OLS perform good on predicting the
+        upward trend of GDP. The prediction is very close to the true gdp value from 2013 to 2022'''
                     , style={'fontSize': 18}),
 
         
@@ -635,14 +608,13 @@ app.layout = html.Div([
 
             dcc.Markdown('''Additionally, We implemented recurrent neural network (RNN) with only one Simple RNN layer to predict GDP values
                         based on input variables INVAMT (investment value), YYYY (the year), and WT (household head weight).
-                        The model is trained using a dataset of quarterly averages for these variables from survey of customers
-                        and seasonal unadjusted, real GDP obtained from IMF website. The dataset is preprocessed to normalize the
+                        The dataset is preprocessed to normalize the
                         GDP and input variable. Then the dataset is split in to three parts, training dataset to be all samples
                         before and include 2002, validation dataset to be all samples from 2003 to 2012, testing dataset to be all
                         samples from 2013 to 2022.''', style={'fontSize': 18}),
 
             dcc.Markdown('''After hyperparameter tuning, we train our model with 50 epochs using Adam (learning rate = 0.005) optimizer
-                        with mean square error as loss function.  The MAE value for our model on testing dataset is 0.075, indicating
+                        with mean square error as loss function.  The MSE value for our model on testing dataset is 0.075, indicating
                         good performance of the model in predicting GDP values.''', style={'fontSize': 18}),
 
             dcc.Markdown('''Finally, a line plot is created to compare the true and predicted GDP values. The x-axis is year and y-axis are
