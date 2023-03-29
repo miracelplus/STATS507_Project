@@ -652,8 +652,9 @@ app.layout = html.Div([
 
     html.Div([
         html.H2('Final Conclusion', style={'color': 'blue'}),
-        html.P('''The prediction result shows that linear regression maintains a higher performance than linear regression model. However, 
-        with larger sample sizes, RNN model seems to have better performance compared with linear regression model. ''', style={'fontSize': 18})
+        html.P('''The prediction result shows that linear regression model maintains a higher performance than random forest model and XG boost model. However, 
+        with larger sample sizes, RNN model seems to have better performance compared with linear regression model. The machine learning model is able to 
+        predict general upward trend of GDP increase for the US. However, the temporary recession caused by events like covid-19 is still unpredictable.''', style={'fontSize': 18})
     ]),
 
 ])
