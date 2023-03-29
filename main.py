@@ -9,7 +9,7 @@ import base64
 import data_analysis.Harshang.EDA
 import data_analysis.Haowei.EDA
 import data_analysis.Runxuan.EDA
-import data_analysis.Zixue.EDA
+#import data_analysis.Zixue.EDA
 import data_analysis.Jingyi.EDA
 import data_analysis.Wei.EDA
 import data_analysis.Elena.EDA
@@ -31,7 +31,7 @@ figure_id_list_Runxuan = data_analysis.Runxuan.EDA.EDA()
 figure_id_list_Wei = data_analysis.Wei.EDA.EDA()
 figure_id_list_Jingyi = data_analysis.Jingyi.EDA.EDA()
 figure_id_list_Elena = data_analysis.Elena.EDA.EDA()
-figure_id_list_Zixue = data_analysis.Zixue.EDA.EDA()
+#figure_id_list_Zixue = data_analysis.Zixue.EDA.EDA()
 
 fig1, id1 = figure_id_list_Harshang[0]
 fig2, id2 = figure_id_list_Harshang[1]
@@ -58,10 +58,10 @@ fig17, id17 = figure_id_list_Elena[0]
 fig18, id18 = figure_id_list_Elena[1]
 fig19, id19 = figure_id_list_Elena[2]
 
-fig20, id20, bef20, aft20 = figure_id_list_Zixue[0]
-fig21, id21, bef21, aft21 = figure_id_list_Zixue[1]
-fig22, id22, bef22, aft22 = figure_id_list_Zixue[2]
-fig23, id23, bef23, aft23 = figure_id_list_Zixue[3]
+#fig20, id20, bef20, aft20 = figure_id_list_Zixue[0]
+#fig21, id21, bef21, aft21 = figure_id_list_Zixue[1]
+#fig22, id22, bef22, aft22 = figure_id_list_Zixue[2]
+#fig23, id23, bef23, aft23 = figure_id_list_Zixue[3]
 
 
 image_filename = 'data/GDP_prediction.png'
@@ -75,6 +75,18 @@ encoded_image3 = base64.b64encode(open(image_filename3, 'rb').read())
 
 image_filename4 = 'data/GDP.png'
 encoded_image4 = base64.b64encode(open(image_filename4, 'rb').read())
+
+image_filename5 = 'data/gdp_correlation.png'
+encoded_image5 = base64.b64encode(open(image_filename5, 'rb').read())
+
+image_filename6 = 'data/us_gdp_with_time.png'
+encoded_image6 = base64.b64encode(open(image_filename6, 'rb').read())
+
+image_filename7 = 'data/box_plot.png'
+encoded_image7 = base64.b64encode(open(image_filename7, 'rb').read())
+
+image_filename8 = 'data/gdp_scatter_plot.png'
+encoded_image8 = base64.b64encode(open(image_filename8, 'rb').read())
 
 app.layout = html.Div([
 
@@ -456,13 +468,18 @@ app.layout = html.Div([
         #dcc.Markdown('''___'''),
         html.Div([
             html.H2('Correlation Between GDP and Consumer Survey Variables', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown(str(bef20)
+            dcc.Markdown('''__Question__: What variable is highly correlated with GDP? 
+                            We would like to build machine learning model to do prediction based on the covariates the survey of customers provided and the time variables. 
+                            The covariates that is either positively correlated with GDP or negatively correlated with GDP will be selected to be the input of the machine learning model.
+                        '''
             , style={'fontSize': 18}),
-            dcc.Graph(
-                    id=id20,
-                    figure=fig20
-                    ),
-            dcc.Markdown(str(aft20)
+            
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image5.decode()), style={'height':'100%', 'width':'100%'}),
+            
+            dcc.Markdown('''Based on the correlation plot above, we observed that GDP is highely correlated with YYYY (0.99, the year), INVAMT (-0.93 investment value) and WT (0.95, household head weight).
+                            Based on these finding, these three covariates are highly recommended to be selected as input for machine learning model. However, other covariates with high absolute value
+                            of correlation can also be selected.
+                        '''
             , style={'fontSize': 18}),
         ]),
         dcc.Markdown('''___'''),
@@ -471,13 +488,18 @@ app.layout = html.Div([
         #dcc.Markdown('''___'''),
         html.Div([
             html.H2('US GDP for different years', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown(str(bef21)
+            dcc.Markdown('''__Question__: What is general trend of US GDP according to different time period? Our group were considering about exploratory analysis of GDP trend first, to evaluate whether 
+                            GDP are expnentially increased or linearly increased according to time.
+                        '''
             , style={'fontSize': 18}),
-            dcc.Graph(
-                    id=id21,
-                    figure=fig21
-                    ),
-            dcc.Markdown(str(aft21)
+            
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image6.decode()), style={'height':'100%', 'width':'100%'}),
+            
+            dcc.Markdown('''It seems that according to the plot above, the increase of GDP is more likely to be linear according to time. The reason could be the US is a developed nation, so its GDP
+                            is solely influenced by population growth and technology progress, and all of the two factors above are increase linearly. In this case, we do not need to do log transform on GDP to do 
+                            prediction based on machine learning model. Additionally, economists usually suggest that GDP has quarterly cycle because people living in the US tend to spend more on winter (Chrismas)
+                            and spend less on summer (summmer term). But according to the plot, we did not observed any clear cycle of GDP according to different quarter. 
+                        '''
             , style={'fontSize': 18}),
         ]),
         dcc.Markdown('''___'''),
@@ -486,13 +508,16 @@ app.layout = html.Div([
         #dcc.Markdown('''___'''),
         html.Div([
             html.H2('Box Plot of Different Variables', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown(str(bef22)
+            dcc.Markdown('''__Question__: What are the mean and dispersion of each covariates? Through boxplot, our group would compare the mean, standard deviation, 25% quantile, 75% quantile and 
+                            outliers of each covariates. Because some covariates have large scale, we only select the covoariate that range from 0 to 5. All variables included for this plot are from
+                            survey of customers, and the clear definition for each variables are available [here](https://sda.umsurvey.org/sca/Doc/scax01.htm#1.HEADING). 
+                        '''
             , style={'fontSize': 18}),
-            dcc.Graph(
-                    id=id22,
-                    figure=fig22
-                    ),
-            dcc.Markdown(str(aft22)
+            
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image7.decode()), style={'height':'100%', 'width':'100%'}),
+            
+            dcc.Markdown('''According to the plot, most of the covariates like CAR and HOM have more outliers than other covariates. Some of the covariates like WT has low standard deviation. 
+                        '''
             , style={'fontSize': 18}),
         ]),
         dcc.Markdown('''___'''),
@@ -501,13 +526,16 @@ app.layout = html.Div([
         #dcc.Markdown('''___'''),
         html.Div([
             html.H2('GDP and INVAMT Scatter Plot', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown(str(bef23)
+            dcc.Markdown('''__Question__: What is the relationship between GDP and INVAMT? Because the model are highly likely to select INVAMT as covariates, we would like to explore whether 
+                            WT are positively correlated or negatively correlated with GDP.
+                        '''
             , style={'fontSize': 18}),
-            dcc.Graph(
-                    id=id23,
-                    figure=fig23
-                    ),
-            dcc.Markdown(str(aft23)
+            
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image8.decode()), style={'height':'100%', 'width':'100%'}),
+            
+            dcc.Markdown('''According to the plot, It seems that with higher GDP, the INVAMT tend to be lower. This is true because one of the GDP component is investment, so if family's investment
+                            worth more, it would mean the GDP would be higher. 
+                        '''
             , style={'fontSize': 18}),
         ]),
         dcc.Markdown('''___'''),

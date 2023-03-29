@@ -16,6 +16,7 @@ def EDA():
     """
     figure_id_list = []
     zixue_path = Path('data/Zixue/AAO2b05c.csv')
+
     df1 = pd.read_csv(zixue_path, sep=",", header=0)
 
     df1['Q'] = df1['YYYYQ'].astype(str).str[-1]
