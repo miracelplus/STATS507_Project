@@ -572,43 +572,6 @@ app.layout = html.Div([
                     , style={'fontSize': 18}),
 
         
-
-        html.Div([
-            html.H2('GDP Prediction using World Bank Dataset', style={'color': 'green', 'fontSize': 22}),
-
-            html.P('For the dataset from world bank, we are selecting following variables: ', style={'fontSize': 18}),
-                dcc.Markdown('''
-                1. Lending interest rate percentage	
-                2. Expense (percentage of GDP)	
-                3. General government final consumption expenditure (%percentageof GDP)	
-                4. Exports of goods and services (percentage of GDP)	
-                5. Unemployment, total (percentage of total labor force) (national estimate)	Inflation, GDP deflator (annual percentage)
-        
-                '''
-                , style={'fontSize': 18}),
-            
-            html.Img(src='data:image/png;base64,{}'.format(encoded_image3.decode()), style={'height':'100%', 'width':'100%'}),
-        ]),
-        
-        dcc.Markdown('''Fit result: ''', style={'fontSize': 18}),
-        dcc.Markdown('''
-            * Linear regression train MSE: 0.04872908864363885
-            * Random forest train MSE: 0.03947574564539995
-            * XGBoost train MSE: 2.646786878949603e-07
-            * Linear regression train MSE: 0.13671717619756904
-            * Random forest train MSE: 1.2741367094303135
-            * XGBoost train MSE: 0.616334083743745
-        '''
-                    , style={'fontSize': 18}),
-        
-        dcc.Markdown('''We are using the last 5 years as the test dataset while other years are utilized as training dataset. 
-                        From all results above, we found out that the best model is actually the linear regression model using
-                        the consumer report data. As the result shows, the prediction performs bad especially for Random forest
-                        and XGboost. Insufficient data might be the main reason and cause the simplest method, linear regression 
-                        model, to surpass others.'''
-                    , style={'fontSize': 18}),
-
-        
         # COPY STARTING HERE
         dcc.Markdown('''___'''),
         html.Div([

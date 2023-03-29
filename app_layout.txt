@@ -1,131 +1,34 @@
-app.layout = html.Div([
-    html.H1('Business Conditions'),
+html.Div([
+            html.H2('GDP Prediction using World Bank Dataset', style={'color': 'green', 'fontSize': 22}),
 
-    html.Div('''
-        BAGO: Would you say that at the present time business conditions
-              are better or worse than they were a year ago? 
-    '''),
-
-    dcc.Graph(
-        id=id1,
-        figure=fig1
-    ),
-
-    html.Div('''
-        BEXP: And how about a year from now, do you expect that in the
-              country as a whole business conditions will be better, or
-              worse than they are at present, or just about the same?
-    '''),
-
-    dcc.Graph(
-        id=id2,
-        figure=fig2
-    ),
-
-    html.Div('''
-        BUS12: Now turning to business conditions in the
-               country as a whole--do you think that during the next 12
-               months we'll have good times financially, or bad times,
-               or what?
-    '''),
-
-    dcc.Graph(
-        id=id3,
-        figure=fig3
-    ),
-
-    html.Div('''
-        BUS12: Looking ahead, which would you say is more likely -- that
-               in the country as a whole we'll have continuous good times
-               during the next 5 years or so, or that we will have periods
-               of widespread unemployment or depression, or what?
-    '''),
-
-    dcc.Graph(
-        id=id4,
-        figure=fig4
-    ),
-
-    html.Div('''
-        UNEMP: Looking ahead, which would you say is more likely -- that
-               in the country as a whole we'll have continuous good times
-               during the next 5 years or so, or that we will have periods
-               of widespread unemployment or depression, or what?
-    '''),
-
-    dcc.Graph(
-        id=id5,
-        figure=fig5
-    ),
-
-    html.Div('''
-        GOVT: As to the economic policy of the government -- I mean steps
-              taken to fight inflation or unemployment -- would you say the
-              government is doing a good job, only fair, or a poor job?
-    '''),
-
-    dcc.Graph(
-        id=id6,
-        figure=fig6
-    ),
-
-    html.Div('''
-        RATEX: No one can say for sure, but what do you think will happen to
-               interest rates for borrowing money during the next 12
-               months--will they go up, stay the same, or go down?
-    '''),
-
-    dcc.Graph(
-        id=id7,
-        figure=fig7
-    ),
-
-    html.Div('''
-        AGE: Age distribution
-    '''),
-
-    dcc.Graph(
-        id=id8,
-        figure=fig8
-    ),
-
-    html.Div('''
-
-    '''),
-    
-    dcc.Graph(
-        id=id9,
-        figure=fig9
-    ),
-
-    html.Div('''
-
-    '''),
-
-    dcc.Graph(
-        id=id10,
-        figure=fig10
-    ),
-
-    html.Div('''
-
-    '''),
-    
-    dcc.Graph(
-        id=id11,
-        figure=fig11
-    ),
-    
-    html.Div(bef12),    
-    dcc.Graph(
-        id=id12,
-        figure=fig12
-    ),    
-    html.Div(aft12),
-    html.Div(bef13),
-    dcc.Graph(
-        id=id13,
-        figure=fig13
-    ),
-    html.Div(aft13)
-])
+            html.P('For the dataset from world bank, we are selecting following variables: ', style={'fontSize': 18}),
+                dcc.Markdown('''
+                1. Lending interest rate percentage	
+                2. Expense (percentage of GDP)	
+                3. General government final consumption expenditure (%percentageof GDP)	
+                4. Exports of goods and services (percentage of GDP)	
+                5. Unemployment, total (percentage of total labor force) (national estimate)	Inflation, GDP deflator (annual percentage)
+        
+                '''
+                , style={'fontSize': 18}),
+            
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image3.decode()), style={'height':'100%', 'width':'100%'}),
+        ]),
+        
+        dcc.Markdown('''Fit result: ''', style={'fontSize': 18}),
+        dcc.Markdown('''
+            * Linear regression train MSE: 0.04872908864363885
+            * Random forest train MSE: 0.03947574564539995
+            * XGBoost train MSE: 2.646786878949603e-07
+            * Linear regression train MSE: 0.13671717619756904
+            * Random forest train MSE: 1.2741367094303135
+            * XGBoost train MSE: 0.616334083743745
+        '''
+                    , style={'fontSize': 18}),
+        
+        dcc.Markdown('''We are using the last 5 years as the test dataset while other years are utilized as training dataset. 
+                        From all results above, we found out that the best model is actually the linear regression model using
+                        the consumer report data. As the result shows, the prediction performs bad especially for Random forest
+                        and XGboost. Insufficient data might be the main reason and cause the simplest method, linear regression 
+                        model, to surpass others.'''
+                    , style={'fontSize': 18}),
