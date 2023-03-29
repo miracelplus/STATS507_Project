@@ -525,7 +525,7 @@ app.layout = html.Div([
         Consumption + Investment + Government Spending. We choose real GDP (in million dolars) mainly because we would like our data to be adjusted from inflation, since government behavior
         like monetary policy is unpredictable. We choose YYYY (the year), INVAMT (investment value), WT (household head weight), PAGOR1 (REASONS: FINANCES B/W YR AGO (1))
         and HOMEAMT (market value of home) as our covariates mainly because for those variables they are highly correlated with GDP (>0.80 or <-0.80 for correlation coefficient). 
-        
+        Another reason for choosing these variable is because there is clear economic economic causality between some covariates like investment value and GDP. 
                     '''
                     , style={'fontSize': 18}),
         
