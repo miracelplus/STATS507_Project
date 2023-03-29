@@ -662,8 +662,8 @@ app.layout = html.Div([
     Input('demo-dropdown', 'value')
 )
 
-def update_output(value, pred_results_dict):
-    return f'The GDP of United States in {value} is predicted to be : {pred_results_dict[value]}'
+def update_output(value):
+    return f'The GDP of United States in {value} is predicted to be : '
 
 
 

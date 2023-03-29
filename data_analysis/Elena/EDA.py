@@ -18,13 +18,6 @@ def EDA():
     figure_id_list = []
     path = Path('data/Elena/PFinClean.csv')
     pfin = pd.read_csv(path, index_col=0)
-    pfin_df=pfin[['PAGO', 'PAGO5', 'PEXP', 'PEXP5']]
-    corr_matrix = pfin_df.corr()
-    print(corr_matrix)
-    fig1 = sn.heatmap(corr_matrix, annot=True).set(title="Personal Finance Correlation Heatmap")
-    
-    #fig1 = px.imshow(corr_matrix)
-    print(fig1)
     fig2 = go.Figure()
     fig2.add_trace(go.Histogram(x=pfin['PAGO5'], name="PAGO5"))
     fig2.add_trace(go.Histogram(x=pfin['PEXP5'], name="PEXP5"))
@@ -32,7 +25,7 @@ def EDA():
                        xaxis_title="Data", 
                        yaxis_title="Count")
     fig2.update_traces(opacity=0.75)
-
+    fig2.update_xaxes(tickvals=[1,3,5,8,9])
     # fig2.show()
     AGE_group = pfin.groupby('AGE')
     AGE_mean = AGE_group[['PAGO5','PEXP5']].mean()
