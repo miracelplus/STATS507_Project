@@ -652,7 +652,8 @@ app.layout = html.Div([
 
     html.Div([
         html.H2('Final Conclusion', style={'color': 'blue'}),
-        html.P('Write about the conclusion reached from EDA and Prediction.', style={'fontSize': 18})
+        html.P('''The prediction result shows that linear regression maintains a higher performance than linear regression model. However, 
+        with larger sample sizes, RNN model seems to have better performance compared with linear regression model. ''', style={'fontSize': 18})
     ]),
 
 ])
