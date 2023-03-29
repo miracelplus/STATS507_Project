@@ -39,4 +39,6 @@ Data is collected from the following sources:
 - Wei Lee
 - Zixue Zeng
 
+## Application Website Link
+https://stats-507-project.uc.r.appspot.com/
 
