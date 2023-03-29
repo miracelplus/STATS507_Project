@@ -520,40 +520,25 @@ app.layout = html.Div([
                 we chose to build predictive models to predict the GDP of United States.'''
             , style={'fontSize': 18}),
         
-        dcc.Markdown('''In this section, we are actually using data from different sources. Specifically, we are constructing
-                        two different datasets, one is from the consumer report, and the other one is from the world bank
-                        (including the GDP result). For each dataset, we have implemented various models and we finally compare
-                        the result.'''
+        dcc.Markdown('''In this section, we would like to build model to predict real, seasonal unadjusted gdp based on variables provided from Survey of Customers.
+        The reason for choose gdp as our predictor is because it is pre-assumed that customer behavior would influence GDP natioally because GDP approximately equal to 
+        Consumption + Investment + Government Spending. We choose real GDP main because we would like our data to be adjusted from inflation, since Government Behavior
+        like monetary policy is unpredictable. We choose YYYY (the year), INVAMT (investment value) and WT (household head weight) as our covariates mainly because for those
+        variables they are highly correlated with GDP (>0.95 or <-0.95 for correlation coefficient). 
+        
+                    '''
                     , style={'fontSize': 18}),
         
         html.P('Here are the models we chose to predict GDP: ', style={'fontSize': 18}),
         dcc.Markdown('''
-                        1. Linear Regression
+                        1. Linear Regression (Ordinary least square)
+                        2. linear Regression (SGD)
                         2. XG Boost
                         3. Random Forest
                         3. Recurrent Neural Network (RNN)
                     '''
                     , style={'fontSize': 18}),
         
-        html.P('Here are the variables we used to build the above models: ', style={'fontSize': 18}),
-        dcc.Markdown('''
-                        1. ICE: The Index of Consumer Expectations
-                        2. UNEMP: How about people out of work during the coming 12 months --
-                        do you think that there will be more unemployment than now,
-                        about the same, or less?
-                        3. GOVT: As to the economic policy of the government -- I mean steps
-                        taken to fight inflation or unemployment -- would you say the
-                        government is doing a good job, only fair, or a poor job?	
-                        4. RATEX: No one can say for sure, but what do you think will happen to
-                        interest rates for borrowing money during the next 12
-                        months--will they go up, stay the same, or go down?	
-                        5. INCOME:	Now, thinking about your total income from all sources
-                        (including your job), how much did you receive in the
-                        previous year?
-                        6. INVAMT: Considering all of your(family's) investments in the stock market,
-                        overall about how much would your investments be worth today?
-                    '''
-                    , style={'fontSize': 18}),
 
         html.Div([
             html.H2('GDP Prediction using Consumer Report Dataset', style={'color': 'green', 'fontSize': 22}),
@@ -562,12 +547,9 @@ app.layout = html.Div([
         
         dcc.Markdown('''Fit result: ''', style={'fontSize': 18}),
         dcc.Markdown('''
-            * Linear regression train MSE: 0.0064096419092549515
-            * Random forest train MSE: 0.017696450768226374
-            * XGBoost train MSE: 3.7131708546349683e-07
-            * Linear regression test MSE: 0.06205238714832588
-            * Random forest test MSE: 1.9091957059298448
-            * XGBoost test MSE: 2.0300266869267167
+            * Linear regression test MSE:0.012902330558300784
+            * Random forest test MSE: 0.2980126229712635
+            * XGBoost test MSE: 0.4051003743833473
         '''
                     , style={'fontSize': 18}),
 
