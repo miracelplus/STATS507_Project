@@ -46,8 +46,8 @@ def EDA():
 
     # Update the layout to adjust the height, width, and title of the heatmap
     heatmap.update_layout(
-        height=600,
-        width=800,
+        height=800,
+        #width=850,
         title="Correlation plot of GDP and surveys of consumer variables"
     )
     id1 = "Correlation plot of GDP and surveys of consumer variables"

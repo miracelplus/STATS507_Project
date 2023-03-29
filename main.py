@@ -17,9 +17,10 @@ import data_analysis.Elena.EDA
 
 
 # Final prediction results obtained from the RNN Model
-pred_results_dict = {'2012': 0.9812531, '2013': 1.0452406, '2014': 1.1253386, '2015': 1.1949261, 
-'2016': 1.2582558, '2017': 1.325577, '2018': 1.3971158, '2019': 1.4603425, 
-'2020': 1.553108, '2021': 1.6295736}
+pred_results_dict = {'2013': 16.79052825, '2014': 17.0549630, '2015': 17.3859760, 
+                     '2016': 17.6735540, '2017': 17.9352710, '2018': 18.2134825, 
+                     '2019': 18.5091240, '2020': 18.7704145, '2021': 19.1537770, 
+                     '2022': 19.4697795}
 
 app = dash.Dash(__name__)
 server = app.server
@@ -71,6 +72,9 @@ encoded_image2 = base64.b64encode(open(image_filename2, 'rb').read())
 
 image_filename3 = 'data/GDP_worldbank_pred.png'
 encoded_image3 = base64.b64encode(open(image_filename3, 'rb').read())
+
+image_filename4 = 'data/GDP.png'
+encoded_image4 = base64.b64encode(open(image_filename4, 'rb').read())
 
 app.layout = html.Div([
 
@@ -552,10 +556,11 @@ app.layout = html.Div([
                     , style={'fontSize': 18}),
 
         html.Div([
-            html.H2('GDP prediction using consumer report dataset', style={'color': 'green', 'fontSize': 22}),
+            html.H2('GDP Prediction using Consumer Report Dataset', style={'color': 'green', 'fontSize': 22}),
             html.Img(src='data:image/png;base64,{}'.format(encoded_image2.decode()), style={'height':'100%', 'width':'100%'}),
         ]),
-
+        
+        dcc.Markdown('''Fit result: ''', style={'fontSize': 18}),
         dcc.Markdown('''
             * Linear regression train MSE: 0.0064096419092549515
             * Random forest train MSE: 0.017696450768226374
@@ -569,7 +574,7 @@ app.layout = html.Div([
         
 
         html.Div([
-            html.H2('GDP prediction using world bank dataset', style={'color': 'green', 'fontSize': 22}),
+            html.H2('GDP Prediction using World Bank Dataset', style={'color': 'green', 'fontSize': 22}),
 
             html.P('For the dataset from world bank, we are selecting following variables: ', style={'fontSize': 18}),
                 dcc.Markdown('''
@@ -584,7 +589,8 @@ app.layout = html.Div([
             
             html.Img(src='data:image/png;base64,{}'.format(encoded_image3.decode()), style={'height':'100%', 'width':'100%'}),
         ]),
-
+        
+        dcc.Markdown('''Fit result: ''', style={'fontSize': 18}),
         dcc.Markdown('''
             * Linear regression train MSE: 0.04872908864363885
             * Random forest train MSE: 0.03947574564539995
@@ -603,11 +609,47 @@ app.layout = html.Div([
                     , style={'fontSize': 18}),
 
         
-        
         # COPY STARTING HERE
         dcc.Markdown('''___'''),
         html.Div([
-            html.H2('GDP prediction using RNN', style={'color': 'green', 'fontSize': 22}),
+            html.H2('GDP Prediction using Linear Regression (SGD)', style={'color': 'green', 'fontSize': 22}),
+
+            dcc.Markdown('''We also tried to get a linear regression model using stochastic gradient descent method to predict the U.S. GDP (in million dollars) 
+                            from 2013 to 2022. The motivation for choosing the SGD method is to look for potential improvement on the linear model presented in 
+                            the section above, via (a) using a larger dataset and (b) using SGD instead of direct fitting.
+                            This model is trained on the same dataset and using the same three features (investment, year, and household head weight),
+                            quarterly averaged in the same way as the RNN model introduced in the next section.
+                            Data spiting: training set: 1978 to 2008; validation set: 2008 to 2012; testing set: 2013 to 2022
+                        ''', style={'fontSize': 18}),
+            dcc.Markdown('''Hyperparameter tuning: we scan the parameter alpha (the multiplier that controls the L2 regularization) in some range and select the value
+                            , alpha = 0.096, that gives the best performance on the validation set.
+                        ''', style={'fontSize': 18}),
+            
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image4.decode()), style={'height':'100%', 'width':'100%'}),
+            
+            dcc.Markdown('''Fit result: ''', style={'fontSize': 18}),
+            dcc.Markdown('''
+                            * Mean Absolute Error: 163931 million dollars
+                            * Root Mean Squared Error: 195413 million dollars
+                            * Mean Squared Error:38186424205 million dollars
+                        '''
+                    , style={'fontSize': 18}),
+            
+            dcc.Markdown('''The figure above shows the model's prediction for the U.S. GDP from 1978 to 2022, where the first few decades until
+                            2008 is the training set. The graph indicates that the model can predict the large increasing trend of GDP, but failed to predict 
+                            short-term fluctuations such as the sudden decrease of GDP in 2008 and 2022.'''
+                    , style={'fontSize': 18}),
+
+            
+        ]),
+        dcc.Markdown('''___'''),
+        # COPY ENDING HERE
+
+
+        # COPY STARTING HERE
+        #dcc.Markdown('''___'''),
+        html.Div([
+            html.H2('GDP Prediction using RNN', style={'color': 'green', 'fontSize': 22}),
 
             dcc.Markdown('''Additionally, We implemented recurrent neural network (RNN) with only one Simple RNN layer to predict GDP values
                         based on input variables INVAMT (investment value), YYYY (the year), and WT (household head weight).
@@ -674,7 +716,7 @@ def update_output(value):
     if value is None:
         raise PreventUpdate
     else:
-        return f'The GDP of United States in {value} is predicted to be : {pred_results_dict[value]}'
+        return f'The GDP of United States in {value} is predicted to be : ${pred_results_dict[value]} trillion'
 
 
 
