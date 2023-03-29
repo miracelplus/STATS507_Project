@@ -599,8 +599,7 @@ app.layout = html.Div([
             dcc.Markdown('''We also tried to get a linear regression model using stochastic gradient descent method to predict the U.S. GDP (in million dollars) 
                             from 2013 to 2022. The motivation for choosing the SGD method is to look for potential improvement on the linear model presented in 
                             the section above, via (a) using a larger dataset and (b) using SGD instead of direct fitting.
-                            This model is trained on the same dataset and using the same three features (investment, year, and household head weight),
-                            quarterly averaged in the same way as the RNN model introduced in the next section.
+                            This model is trained on the same dataset and using the same three features (investment, year, and household head weight).
                             Data spiting: training set: 1978 to 2008; validation set: 2008 to 2012; testing set: 2013 to 2022
                         ''', style={'fontSize': 18}),
             dcc.Markdown('''Hyperparameter tuning: we scan the parameter alpha (the multiplier that controls the L2 regularization) in some range and select the value
