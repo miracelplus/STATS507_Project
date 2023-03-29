@@ -36,14 +36,17 @@ def EDA():
     # plot the mean ICS score for each age group using plotly
     fig2 = px.bar(AGE_ICS_mean, x=AGE_ICS_mean.index, y='ICS')
     fig2.update_layout(title_text='Average ICS (Index of Consumer Sentiment) for each age group')
+    fig2.update_layout(title_x=0.5)
 
     # plot the mean ICC score for each age group using plotly
     fig3 = px.bar(AGE_ICC_mean, x=AGE_ICC_mean.index, y='ICC')
     fig3.update_layout(title_text='Average ICC (Index of Consumer Condition) for each age group')
+    fig3.update_layout(title_x=0.5)
 
     # plot the mean ICE score for each age group using plotly
     fig4 = px.bar(AGE_ICE_mean, x=AGE_ICE_mean.index, y='ICE')
     fig4.update_layout(title_text='Average ICE (Index of Consumer Expectation) for each age group')
+    fig4.update_layout(title_x=0.5)
 
     return [(fig1, 'Age distribution'), (fig2, 'Average ICS (Index of Consumer Sentiment) for each age group'), (fig3, 'Average ICC (Index of Consumer Condition) for each age group'), (fig4, 'Average ICE (Index of Consumer Expectation) for each age group')]
 

@@ -1,6 +1,6 @@
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
+#import seaborn as sns
 import plotly.express as px
 from plotly import graph_objects as go
 from plotly.subplots import make_subplots
@@ -19,10 +19,10 @@ def EDA():
 
     fig1.append_trace(go.Histogram(x=data1['INCOME2'].mask(data1['SEX']=='1'),histnorm='percent'), row=1, col=1)
     fig1.append_trace(go.Histogram(x=data1['INCOME2'].mask(data1['SEX']=='2'),histnorm='percent'), row=2, col=1)
-    fig1.update_xaxes(title_text="income", row=1, col=1)
-    fig1.update_xaxes(title_text="income", row=2, col=1)
-    fig1.update_yaxes(title_text="percentage", row=1, col=1)
-    fig1.update_yaxes(title_text="percentage", row=2, col=1)
+    fig1.update_xaxes(title_text="Income", row=1, col=1)
+    fig1.update_xaxes(title_text="Income", row=2, col=1)
+    fig1.update_yaxes(title_text="Percentage", row=1, col=1)
+    fig1.update_yaxes(title_text="Percentage", row=2, col=1)
     #fig1.show()
 
     fig2 = make_subplots(rows=2, cols=3,subplot_titles=("Grade 0-8 no hs diploma", "Grade 9-12 no hs diploma", "Grade 0-12 w/ hs diploma", "Grade 13-17 no col degree", "Grade 13-16 w/ col degree", "Grade 17 W/ col degree"))

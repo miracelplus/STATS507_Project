@@ -110,18 +110,19 @@ def EDA():
     legend_title="Personal Income Percentile", 
     font=dict(family="Times New Roman",size=16,color="Black"))
     fig1.update_xaxes(tickvals = np.arange(RDdf['years'].min(),RDdf['years'].max()+1))
+    fig1.update_layout(title_x=0.5)
     id1 = "Level of Partisan for High/Low Income Groups"
-    bef1 = '''Question: What does the average level of partisan change over time, 
-    and do people with high personal income and low personal income exhibit different trends?
-    \n We attempt to investigate the level of partisan in a group by using the survey result for the following question:\" 
+    bef1 = '''__Question__: Does the average level of partisanship change over time, 
+    and do people with high personal income and low personal income exhibit different trends in terms of partisanship?
+    \n We attempt to investigate the level of partisanship in a group by using the survey result for the following question:\" 
     Generally speaking, do you usually think of yourself as a Republican, a Democrat, an Independent, or what? \"
     Possible answers include Republican, Democrat, Independent, Don't Know, and N/A. 
     \n We choose to analyze two groups of individuals separately: those who has the top 10% income (high income group) and 
-    those who with the bottom 10% income (low income group). We model the level of partisan in a year for each group as 
+    those who with the bottom 10% income (low income group). We model the level of partisanship in a year for each group as 
     the ratio of the number of individuals who answered Republican or Democrat to the size of their respective group in
     that year, plotted as the y axis in the figure below.
     '''
-    aft1 = '''Since the survey have mostly empty/too few data for years before 2004, the plot is plotting the partisan level
+    aft1 = '''Since the survey have mostly empty/too few data for years before 2004, the plot is plotting the partisanship level
     from 2004 to 2022. From the data shown above, for both income groups, the partisan tendencies have no drastic
     fluctuations since 2004, yet both have a slight overall decreasing trend. There is, however, a difference between the
     two groups: it is evident that individuals with the highest personal income have a clearer preference for either the
@@ -142,10 +143,11 @@ def EDA():
     legend_title="Age Groups",
     font=dict(family="Times New Roman",size=16,color="Black"))
     fig2.update_xaxes(tickangle=45,tickvals = np.arange(bizagedf['years'].min(),bizagedf['years'].max()+1))
+    fig2.update_layout(title_x=0.5)
     id2 = "Economic Optimism in 5 Years for Different Age Groups"
-    bef2 = ''' \n \n \nQuestion: On average, how optimistic an invdividual is about the economy in the next five years, how this 
+    bef2 = ''' \n \n \n__Question__: On average, how optimistic is an invdividual about the economy in the next five years, how this 
     confidence level has changed over the years, and how is this expection for economy differ at different age?
-    \n We attempt to investigate the expection of the economy in the contry as whole using the survey result for the question:
+    \n We attempt to investigate the expection of the economy in the country as whole using the survey result for the question:
     \"Looking ahead, which would you say is more likely -- that in the country as a whole we'll have continuous good times 
     during the next 5 years or so, or that we will have periods of widespread unemployment or depression, or what?\"
     Possible answers include Good times, Good with qualifications, Pro-con, Bad with qualifications, Bad times, Don't Know,
@@ -155,7 +157,7 @@ def EDA():
     took the survey into three age groups with roughly the same population (i.e., define the groups via the 33% and 67% 
     percentile in age.)
     '''
-    aft2 = '''From the figure above, we conclude that overall, individuals expecetion for the economy do change significantly 
+    aft2 = '''From the figure above, we conclude that overall, individuals' expectation for the economy do change significantly 
     with time, and all three age groups follow similar time developments. Ignoring small scale fluctuations, there are three
     major peaks in economic expectation from 1978 to 2022, centered approximately at 1984, 2000, and 2015. We further claim 
     that, overall, young people are most likely to have a positive expection for the economy in the next five years, and

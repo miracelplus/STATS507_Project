@@ -55,6 +55,7 @@ def EDA():
                 title="ECONOMY BETTER/WORSE NEXT YEAR")
     fig2.update_xaxes(type='category')
     fig2.update_xaxes(categoryorder='category ascending')
+    fig2.update_layout(title_x=0.5)
 
 
     # Plot BUS12 Values: Now turning to business conditions in the
@@ -65,6 +66,7 @@ def EDA():
                 title="ECONOMY GOOD/BAD NEXT YEAR")
     fig3.update_xaxes(type='category')
     fig3.update_xaxes(categoryorder='category ascending')
+    fig3.update_layout(title_x=0.5)
 
 
     # Plot BUS5 Values: Looking ahead, which would you say is more likely -- that
@@ -76,6 +78,7 @@ def EDA():
                 title="ECONOMY GOOD/BAD NEXT 5 YEARS")
     fig4.update_xaxes(type='category')
     fig4.update_xaxes(categoryorder='category ascending')
+    fig4.update_layout(title_x=0.5)
 
 
     # Plot UNEMP Values: How about people out of work during the coming 12 months --
@@ -86,6 +89,7 @@ def EDA():
                 title="UNEMPLOYMENT MORE/LESS NEXT YEAR")
     fig5.update_xaxes(type='category')
     fig5.update_xaxes(categoryorder='category ascending')
+    fig5.update_layout(title_x=0.5)
 
 
     # Plot GOVT Values: As to the economic policy of the government -- I mean steps
@@ -96,6 +100,7 @@ def EDA():
                 title="GOVERNMENT ECONOMIC POLICY")
     fig6.update_xaxes(type='category')
     fig6.update_xaxes(categoryorder='category ascending')
+    fig6.update_layout(title_x=0.5)
 
     # Plot RATEX Values: No one can say for sure, but what do you think will happen to
     #            interest rates for borrowing money during the next 12
@@ -105,5 +110,6 @@ def EDA():
                 title="INTEREST RATES UP/DOWN NEXT YEAR")
     fig7.update_xaxes(type='category')
     fig7.update_xaxes(categoryorder='category ascending')
+    fig7.update_layout(title_x=0.5)
 
     return [(fig1, 'BAGO-graph'), (fig2, 'BEXP-graph'), (fig3, 'BUS12-graph'), (fig4, 'BUS5-graph'), (fig5, 'UNEMP-graph'), (fig6, 'GOVT-graph'), (fig7, 'RATEX-graph')]
