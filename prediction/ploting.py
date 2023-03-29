@@ -20,6 +20,8 @@ from keras.optimizers import Adam
 import statistics
 from sklearn.metrics import mean_absolute_error
 
+#The code on testing dataset prediction, plotting and generating dictionary for prediction dataset.
+
 df1 = pd.read_csv("AAO2b05c.csv", sep=",", header=0)
 
 df1['Q'] = df1['YYYYQ'].astype(str).str[-1]
@@ -113,7 +115,16 @@ plt.legend()
 # Show the plot
 plt.show()
 
-pred_results_dict = {'2012': 0.9812531, '2013': 1.0452406, '2014': 1.1253386, '2015': 1.1949261, 
-'2016': 1.2582558, '2017': 1.325577, '2018': 1.3971158, '2019': 1.4603425, 
-'2020': 1.553108, '2021': 1.6295736}
+a = y_pred_flat
+
+
+
+dic = {}
+for i in range(10):
+  year = 2013 + i
+  year = str(year)
+  dic[year] = a[i]*std_dev+mean
+
+print(dic)
+
 

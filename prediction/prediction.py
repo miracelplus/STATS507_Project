@@ -19,6 +19,8 @@ from keras.optimizers import Adam
 import statistics
 from sklearn.metrics import mean_absolute_error
 
+#This file is used for the training and validation of the RNN model.
+#Notice that the y_test and x_test are accually validation dataset.
 
 df1 = pd.read_csv("AAO2b05c.csv", sep=",", header=0)
 
