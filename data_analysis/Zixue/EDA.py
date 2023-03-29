@@ -97,7 +97,8 @@ def EDA():
 
     id3 = "Box Plots of Variables that range from 0 to 5"
     bef3 = '''Question: What are the mean and dispersion of each covariates? Through boxplot, our group would compare the mean, standard deviation, 25% quantile, 75% quantile and 
-    outliers of each covariates. Because some covariates have large scale, we only select the covoariate that range from 0 to 5. 
+    outliers of each covariates. Because some covariates have large scale, we only select the covoariate that range from 0 to 5. All variables included for this plot are from
+    survey of customers, and the clear definition for each variables are available at https://sda.umsurvey.org/sca/Doc/scax01.htm#1.HEADING. 
     '''
     aft3 = '''According to the plot, most of the covariates like CAR and HOM have more outliers than other covariates. Some of the covariates like WT has low standard deviation. 
     '''
