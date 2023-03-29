@@ -606,7 +606,7 @@ app.layout = html.Div([
         html.Div([
             html.H2('GDP prediction using RNN', style={'color': 'green', 'fontSize': 22}),
 
-            dcc.Markdown('''Finally, We implemented recurrent neural network (RNN) with only one Simple RNN layer to predict GDP values
+            dcc.Markdown('''Additionally, We implemented recurrent neural network (RNN) with only one Simple RNN layer to predict GDP values
                         based on input variables INVAMT (investment value), YYYY (the year), and WT (household head weight).
                         The model is trained using a dataset of quarterly averages for these variables from survey of customers
                         and seasonal unadjusted, real GDP obtained from IMF website. The dataset is preprocessed to normalize the
