@@ -51,7 +51,7 @@ def EDA():
         title="Correlation plot of GDP and surveys of consumer variables"
     )
     id1 = "Correlation plot of GDP and surveys of consumer variables"
-    bef1 = '''Question: What variable is highly correlated with GDP? 
+    bef1 = '''__Question__: What variable is highly correlated with GDP? 
     We would like to build machine learning model to do prediction based on the covariates the survey of customers provided and the time variables. 
     The covariates that is either positively correlated with GDP or negatively correlated with GDP will be selected to be the input of the machine learning model.
     '''
@@ -73,7 +73,7 @@ def EDA():
                                ticktext=averages_by_yyyyq.index)
 
     id2 = "US GDP compared with time"
-    bef2 = '''Question: What is general trend of US GDO according to different time period? Our group were considering about exploratory analysis of GDP trend first, to evaluate whether 
+    bef2 = '''__Question__: What is general trend of US GDO according to different time period? Our group were considering about exploratory analysis of GDP trend first, to evaluate whether 
     GDP are expnentially increased or linearly increased according to time.
     '''
     aft2 = '''It seems that according to the plot above, the increase of GDP is more likely to be linear according to time. The reason could be the US is a developed nation, so its GDP
@@ -96,7 +96,7 @@ def EDA():
     box_plot_except_two.update_layout(title="Box Plots of Variables that range from 0 to 5")
 
     id3 = "Box Plots of Variables that range from 0 to 5"
-    bef3 = '''Question: What are the mean and dispersion of each covariates? Through boxplot, our group would compare the mean, standard deviation, 25% quantile, 75% quantile and 
+    bef3 = '''__Question__: What are the mean and dispersion of each covariates? Through boxplot, our group would compare the mean, standard deviation, 25% quantile, 75% quantile and 
     outliers of each covariates. Because some covariates have large scale, we only select the covoariate that range from 0 to 5. 
     '''
     aft3 = '''According to the plot, most of the covariates like CAR and HOM have more outliers than other covariates. Some of the covariates like WT has low standard deviation. 
@@ -111,7 +111,7 @@ def EDA():
     gdp_vs_invamt.update_layout(title="Scatter plot of GDP vs INVAMT", xaxis_title="GDP", yaxis_title="INVAMT")
 
     id4 = "Scatter plot of GDP vs INVAMT"
-    bef4 = '''Question: What is the relationship between GDP and INVAMT? Because the model are highly likely to select INVAMT as covariates, we would like to explore whether 
+    bef4 = '''__Question__: What is the relationship between GDP and INVAMT? Because the model are highly likely to select INVAMT as covariates, we would like to explore whether 
     WT are positively correlated or negatively correlated with GDP.
     
     '''

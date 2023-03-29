@@ -1,5 +1,6 @@
 import dash
 from dash import dcc, html, Input, Output
+from dash.exceptions import PreventUpdate
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
@@ -14,6 +15,8 @@ import data_analysis.Wei.EDA
 import data_analysis.Elena.EDA
 #import prediction.ploting
 
+
+# Final prediction results obtained from the RNN Model
 pred_results_dict = {'2012': 0.9812531, '2013': 1.0452406, '2014': 1.1253386, '2015': 1.1949261, 
 '2016': 1.2582558, '2017': 1.325577, '2018': 1.3971158, '2019': 1.4603425, 
 '2020': 1.553108, '2021': 1.6295736}
@@ -240,14 +243,14 @@ app.layout = html.Div([
         # Fig 7
         #dcc.Markdown('''___'''),
         html.Div([
-            html.H2('Graph Title HERE', style={'color': 'green', 'fontSize': 22}),
-            dcc.Markdown('''**Assumptions and EDA Question HERE**'''
+            html.H2('Interest Rates A Year From Now', style={'color': 'green', 'fontSize': 22}),
+            dcc.Markdown('''The graph shows consumer sentiment about interest rates in the next year.'''
             , style={'fontSize': 18}),
             dcc.Graph(
                     id=id7,
                     figure=fig7
                     ),
-            dcc.Markdown('''**Actual Findings HERE**'''
+            dcc.Markdown('''Every year the consumers feel that the interest rates will go up or stay the same.'''
             , style={'fontSize': 18}),
         ]),
         dcc.Markdown('''___'''),
@@ -416,7 +419,7 @@ app.layout = html.Div([
         # fig 18
         #dcc.Markdown('''___'''),
         html.Div([
-            html.H2('Average Personal Finance by age group', style={'color': 'green', 'fontSize': 22}),
+            html.H2('Average Personal Finance by Age Group', style={'color': 'green', 'fontSize': 22}),
             dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each age group.'''
             , style={'fontSize': 18}),
             dcc.Graph(
@@ -431,7 +434,7 @@ app.layout = html.Div([
         # fig 19
         #dcc.Markdown('''___'''),
         html.Div([
-            html.H2('Average Personal Finance by number of kid group', style={'color': 'green', 'fontSize': 22}),
+            html.H2('Average Personal Finance by number of kids group', style={'color': 'green', 'fontSize': 22}),
             dcc.Markdown('''This bar graph shows the average response to whether current personal finance has gotten better or worse than 5 years ago and whether it is expected to be better or worse 5 years from now for each number of kids group.'''
             , style={'fontSize': 18}),
             dcc.Graph(
@@ -459,7 +462,7 @@ app.layout = html.Div([
         dcc.Markdown('''___'''),
 
         # Fig 21
-        dcc.Markdown('''___'''),
+        #dcc.Markdown('''___'''),
         html.Div([
             html.H2('US GDP for different years', style={'color': 'green', 'fontSize': 22}),
             dcc.Markdown(str(bef21)
@@ -474,7 +477,7 @@ app.layout = html.Div([
         dcc.Markdown('''___'''),
 
         # Fig 22
-        dcc.Markdown('''___'''),
+        #dcc.Markdown('''___'''),
         html.Div([
             html.H2('Box Plot of Different Variables', style={'color': 'green', 'fontSize': 22}),
             dcc.Markdown(str(bef22)
@@ -489,7 +492,7 @@ app.layout = html.Div([
         dcc.Markdown('''___'''),
 
         # Fig 23
-        dcc.Markdown('''___'''),
+        #dcc.Markdown('''___'''),
         html.Div([
             html.H2('GDP and INVAMT Scatter Plot', style={'color': 'green', 'fontSize': 22}),
             dcc.Markdown(str(bef23)
@@ -642,9 +645,10 @@ app.layout = html.Div([
                 {'label': '2021', 'value': '2021'},
             ],            
             placeholder="Select a Year",
-            id='demo-dropdown'
+            #value=2013,
+            id='prediction-year'
         ),
-        html.Div(id='dd-output-container')
+        html.Div(id='dd-output-container', style={'fontSize': 18})
 
 
 
@@ -659,11 +663,14 @@ app.layout = html.Div([
 
 @app.callback(
     Output('dd-output-container', 'children'),
-    Input('demo-dropdown', 'value')
+    Input('prediction-year', 'value'), prevent_initial_call=True
 )
 
 def update_output(value):
-    return f'The GDP of United States in {value} is predicted to be : '
+    if value is None:
+        raise PreventUpdate
+    else:
+        return f'The GDP of United States in {value} is predicted to be : {pred_results_dict[value]}'
 
 
 
