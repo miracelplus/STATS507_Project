@@ -96,7 +96,9 @@ app.layout = html.Div([
         dcc.Markdown('''
                         1. [_umsurvey_](https://sda.umsurvey.org/sda-public/cgi-bin/hsda2?setupfile=harcsda&datasetname=sca&ui=2&action=subset)
                         2. [_The World Bank_](https://data.worldbank.org/)
-                        3. [_FiveThirtyEight_](https://data.fivethirtyeight.com/)'''
+                        3. [_FiveThirtyEight_](https://data.fivethirtyeight.com/)
+                        4. [_IMF_](https://data.imf.org/?sk=388dfa60-1d26-4ade-b505-a05a558d9a42)'''
+                        
                     , style={'fontSize': 18}),
     ]),
 
@@ -607,7 +609,7 @@ app.layout = html.Div([
         html.Div([
             html.H2('GDP prediction using RNN', style={'color': 'green', 'fontSize': 22}),
 
-            dcc.Markdown('''Finally, We implemented recurrent neural network (RNN) with only one Simple RNN layer to predict GDP values
+            dcc.Markdown('''Additionally, We implemented recurrent neural network (RNN) with only one Simple RNN layer to predict GDP values
                         based on input variables INVAMT (investment value), YYYY (the year), and WT (household head weight).
                         The model is trained using a dataset of quarterly averages for these variables from survey of customers
                         and seasonal unadjusted, real GDP obtained from IMF website. The dataset is preprocessed to normalize the
@@ -656,7 +658,9 @@ app.layout = html.Div([
 
     html.Div([
         html.H2('Final Conclusion', style={'color': 'blue'}),
-        html.P('Write about the conclusion reached from EDA and Prediction.', style={'fontSize': 18})
+        html.P('''The prediction result shows that linear regression model maintains a higher performance than random forest model and XG boost model. However, 
+        with larger sample sizes, RNN model seems to have better performance compared with linear regression model. The machine learning model is able to 
+        predict general upward trend of GDP increase for the US. However, the temporary recession caused by events like covid-19 is still unpredictable.''', style={'fontSize': 18})
     ]),
 
 ])
